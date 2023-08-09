@@ -24,6 +24,8 @@
     ".eslintrc.cjs",
     "vite.config.ts",
     "commitlint.config.cjs",
+    "postcss.config.cjs",
+    "tailwind.config.cjs",
     "src"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
