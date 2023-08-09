@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import InConstruction from './pages/CommingSoon';
+import InConstruction from './pages/ComingSoon';
 
-const siteState = 'CommingSoon';
+const siteState = 'ComingSoon';
 
 function App() {
-  if (siteState === 'CommingSoon') {
+  if (siteState === 'ComingSoon') {
     return <InConstruction />;
   }
   return (

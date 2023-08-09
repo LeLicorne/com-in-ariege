@@ -1,4 +1,4 @@
-function CommingSoon() {
+function ComingSoon() {
   return (
     <main className="h-screen w-full flex flex-col">
       <div
@@ -12,7 +12,7 @@ function CommingSoon() {
         className="h-full w-full flex flex-col pt-64 items-center font-[Poppins] bg-[url('/src/assets/mountains.png')] bg-center bg-cover"
       >
         <h1 className="font-semibold text-4xl md:text-6xl lg:text-8xl">
-          COMMING SOON
+          COMING SOON
         </h1>
         <h3 className="font-medium text-1xl md:text-2xl lg:text-3xl text-gray-600">
           notre site est en construction
@@ -22,4 +22,4 @@ function CommingSoon() {
   );
 }
 
-export default CommingSoon;
+export default ComingSoon;
