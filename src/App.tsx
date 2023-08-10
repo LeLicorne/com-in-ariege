@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import InConstruction from './pages/ComingSoon';
 
-const siteState = 'ComingSoon';
+const siteState = 'home';
 
 function App() {
   if (siteState === 'ComingSoon') {

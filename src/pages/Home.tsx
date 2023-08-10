@@ -1,3 +1,11 @@
+import NavBar from '../components/NavBar';
+import Hero from '../components/Hero';
+
 export default function Home() {
-  return <div className="text-3xl font-bold underline">Hello World !</div>;
+  return (
+    <div className=" flex flex-col h-screen font-[Poppins]">
+      <NavBar />
+      <Hero />
+    </div>
+  );
 }
