@@ -5,7 +5,7 @@ function ComingSoon() {
         id="brandname"
         className="h-20 font-[Poppins] font-bold flex items-center"
       >
-        <h2 className="text-3xl ml-10">COMIN ARIÈGE</h2>
+        <h2 className="text-3xl ml-10">COM IN ARIÈGE</h2>
       </div>
       <div
         id="comingsoon"
