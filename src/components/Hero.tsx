@@ -3,7 +3,7 @@ import { BiSearch } from 'react-icons/bi';
 function Hero() {
   return (
     <>
-      <div className=" absolute h-screen w-full top-0 left-0 bg-[url('/src\assets\mountains.png')] bg-cover bg-center opacity-50" />
+      <div className=" absolute h-screen w-full top-16 left-0 bg-[url('/src\assets\mountains.png')] bg-cover bg-center opacity-50" />
       <div className=" h-screen w-full flex flex-col items-center justify-center z-10 gap-10">
         <div className=" flex flex-col gap-2">
           <div className=" flex flex-col gap-5">
@@ -34,6 +34,9 @@ function Hero() {
             Rechercher
           </button>
         </form>
+      </div>
+      <div className=" w-full flex items-center justify-center py-6 z-10">
+        <h3 className=" font-semibold text-2xl">Nos services</h3>
       </div>
     </>
   );
