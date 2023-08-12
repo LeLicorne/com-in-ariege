@@ -8,7 +8,8 @@ function Footer() {
           <h2 className=" font-bold text-2xl">COM IN ARIÈGE</h2>
           <div>
             <h3>Èlancez-vous vers l&lsquo;hiver!</h3>
-            <h3>Equipements de pointe, sensations infinies.</h3>
+            <h3>Equipements de pointe,</h3>
+            <h3>sensations infinies.</h3>
           </div>
         </div>
         <div className=" footerCategory">

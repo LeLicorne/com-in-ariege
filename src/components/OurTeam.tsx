@@ -6,7 +6,7 @@ function OurTeam() {
       <div className=" w-full flex">
         <h2 className=" font-semibold text-4xl">Notre équipe</h2>
       </div>
-      <div className=" flex flex-row w-full justify-evenly gap-[7%]">
+      <div className=" flex flex-col xl:flex-row w-full justify-evenly gap-[7%]">
         <TeamMemberCard
           image="src/assets/menface.png"
           name="Alexis LO RE"

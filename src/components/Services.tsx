@@ -4,7 +4,7 @@ import ServiceMomentCard from './ServiceMomentCard';
 function Services() {
   return (
     <div className="flex flex-col h-auto w-full items-center z-10 px-[7%] gap-16">
-      <div className="h-auto flex flex-row justify-between gap-[7%]">
+      <div className="h-auto w-full flex flex-col lg:flex-row justify-between gap-[5vw] lg:gap-[7%]">
         <ServiceCard
           image="/src/assets/telesiege.jpg"
           title="Aménagement"
