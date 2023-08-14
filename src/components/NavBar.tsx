@@ -1,9 +1,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { HiOutlineMenuAlt4 } from 'react-icons/hi';
-import { AiOutlineClose } from 'react-icons/ai';
+
+function FaXmark() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 384 512">
+      <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+    </svg>
+  );
+}
 
 function NavBar() {
   const [nav, setNav] = useState(false);
@@ -23,14 +30,14 @@ function NavBar() {
             COM IN ARIÈGE
           </h2>
         </div>
-        <div className="hidden sm:flex flex-row w-full justify-end gap-[7%] font-medium text-black/40   text-[2vw] lg:text-xl">
+        <div className="hidden sm:flex flex-row w-full justify-end gap-[7%] font-medium text-black/40 text-[2vw] lg:text-xl">
           <Link to="/" className=" navBarLink">
             ACCUEIL
           </Link>
           <Link to="/catalogue" className=" navBarLink">
             CATALOGUE
           </Link>
-          <Link to="/à-propos" className=" navBarLink whitespace-nowrap">
+          <Link to="/a-propos" className=" navBarLink whitespace-nowrap">
             À PROPOS
           </Link>
           <Link to="/contact" className=" navBarLink">
@@ -39,11 +46,7 @@ function NavBar() {
         </div>
 
         <div onClick={handleNav} className="sm:hidden relative ">
-          {nav ? (
-            <AiOutlineClose size={20} className="text-black" />
-          ) : (
-            <HiOutlineMenuAlt4 size={20} />
-          )}
+          {nav ? <FaXmark /> : <FaBars size={20} className="text-black" />}
         </div>
       </div>
 

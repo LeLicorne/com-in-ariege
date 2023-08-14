@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <div className="flex flex-col items-center px-[7%]">
-      <div className="flex flex-col md:flex-row gap-4 md:gap-0 w-full justify-between">
+    <div className="flex flex-col items-center mt-32 md:mt-48 mb-4 mx-[7%]">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-0 w-full justify-between">
         <div className="footerCategory">
           <h3 className=" font-bold text-2xl leading-6">COM IN ARIÈGE</h3>
-          <div className=" text-right md:text-left opacity-60">
+          <div className=" text-right md:text-left leading-4 opacity-60">
             <p>Élancez-vous vers l&lsquo;hiver !</p>
             <p>Équipements de pointe,</p>
             <p>sensations infinies.</p>
@@ -34,7 +34,7 @@ function Footer() {
           <div className="footerArguments">
             <p>+33(0) 6 56 78 90 23</p>
             <a href="mailto:contact@cominarige.com">contact@cominarige.com</a>
-            <p className=" flex flex-col leading-4">
+            <p className=" flex flex-col leading-4 mt-2">
               <span>8 AVENUE DE DALOU</span>
               <span>09120 VARILHES</span>
               <span>FRANCE</span>

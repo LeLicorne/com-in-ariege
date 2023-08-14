@@ -2,7 +2,7 @@ import PartnersCard from './PartnersCard';
 
 function OurPartners() {
   return (
-    <div className=" flex flex-col w-full h-auto gap-14  px-[7%] justify-center items-center">
+    <div className="flex flex-col w-full h-auto gap-8 md:gap-14 justify-center items-center">
       <div className=" w-full flex">
         <h2 className=" font-semibold text-4xl">Ils nous font confiances</h2>
       </div>

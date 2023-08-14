@@ -2,11 +2,11 @@ import TeamMemberCard from './TeamMemberCard';
 
 function OurTeam() {
   return (
-    <div className=" w-full h-auto flex flex-col px-[7%] gap-14">
+    <div className=" w-full h-auto flex flex-col gap-8 md:gap-14">
       <div className=" w-full flex">
-        <h2 className=" font-semibold text-4xl">Notre équipe</h2>
+        <h2 className=" font-semibold text-3xl sm:text-4xl">Notre équipe</h2>
       </div>
-      <div className=" flex flex-col xl:flex-row w-full justify-evenly gap-[7%]">
+      <div className="flex flex-col lg:flex-row w-full justify-evenly gap-4 xl:gap-[7%]">
         <TeamMemberCard
           image="src/assets/menface.png"
           name="Alexis LO RE"
@@ -17,7 +17,7 @@ function OurTeam() {
           image="src/assets/menface.png"
           name="Philippe LO RE"
           position="Responsable commercial"
-          description="Bonjour à tous ! Je suis Philippe, le responsable commercial de l'entreprise. Amoureux des sports de glisse, mon objectif est de fournir à nos clients les meilleurs équipements pour leurs aventures hivernales. En collaboration avec mon frère Alexis, nous combinons notre expertise pour vous offrir une expérience client unique."
+          description="Bonjour à tous ! Je suis Philippe, le responsable commercial de l'entreprise. Mon objectif est de fournir à nos clients les meilleurs équipements. En collaboration avec mon frère Alexis, nous combinons notre expertise pour vous offrir une expérience client unique."
         />
       </div>
     </div>
