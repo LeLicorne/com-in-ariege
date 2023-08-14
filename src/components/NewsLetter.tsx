@@ -11,7 +11,7 @@ function NewsLetter() {
           <h2>Inscrivez vous à notre</h2>
           <h2>newsletter</h2>
         </div>
-        <div className="flex flex-col justify-center items-center z-10 text-[3vw] sm:text-[2vw] lg:text-xl text-slate-200/60">
+        <div className="flex flex-col justify-center items-center z-10 text-[3vw] sm:text-[2vw] lg:text-xl text-slate-200/80">
           <p>recevez des offres promotionnelles personalisées</p>
           <p>et restez à l&lsquo;actualité</p>
         </div>
