@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Poppins";
-  src: url("../public/fonts/ADELIA.otf");
+  font-family: 'Poppins';
+  src: url('../public/fonts/ADELIA.otf');
 }
 
 .navBarLink {
