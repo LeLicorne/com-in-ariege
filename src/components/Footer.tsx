@@ -3,47 +3,49 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <div className="flex flex-col items-center px-[7%]">
-      <div className="flex w-full justify-between">
-        <div className=" footerCategory">
-          <h2 className=" font-bold text-2xl">COM IN ARIÈGE</h2>
-          <div>
-            <h3>Èlancez-vous vers l&lsquo;hiver!</h3>
-            <h3>Equipements de pointe,</h3>
-            <h3>sensations infinies.</h3>
+      <div className="flex flex-col md:flex-row gap-4 md:gap-0 w-full justify-between">
+        <div className="footerCategory">
+          <h3 className=" font-bold text-2xl leading-6">COM IN ARIÈGE</h3>
+          <div className=" text-right md:text-left opacity-60">
+            <p>Élancez-vous vers l&lsquo;hiver !</p>
+            <p>Équipements de pointe,</p>
+            <p>sensations infinies.</p>
           </div>
         </div>
-        <div className=" footerCategory">
-          <h2 className=" footerTitle">Nos services</h2>
+        <div className="footerCategory">
+          <h3 className=" footerTitle">Nos services</h3>
           <div className=" footerArguments">
             <Link to="/catalogue">Aménagement</Link>
             <Link to="/communication">Communication</Link>
             <Link to="/catalogue">Signalétique</Link>
           </div>
         </div>
-        <div className=" footerCategory">
-          <h2 className=" footerTitle">Navigation</h2>
+        <div className="footerCategory">
+          <h3 className=" footerTitle">Navigation</h3>
           <div className=" footerArguments">
             <Link to="/">Accueil</Link>
-            <Link to="/à-propos">À propos</Link>
             <Link to="/catalogue">Catalogue</Link>
+            <Link to="/à-propos">À propos</Link>
             <Link to="/contact">Contact</Link>
           </div>
         </div>
-        <div className=" footerCategory">
-          <h2 className=" footerTitle">Contact</h2>
-          <div className=" footerArguments">
-            <h3>+33 6 56 78 90 23</h3>
+        <div className="footerCategory">
+          <h3 className="footerTitle">Contact</h3>
+          <div className="footerArguments">
+            <p>+33(0) 6 56 78 90 23</p>
             <a href="mailto:contact@cominarige.com">contact@cominarige.com</a>
-            <h3 className=" flex flex-col">
-              <span>10 rue de la Vignette</span>
-              <span>Ribérac</span>
-              <span>France</span>
-            </h3>
+            <p className=" flex flex-col leading-4">
+              <span>8 AVENUE DE DALOU</span>
+              <span>09120 VARILHES</span>
+              <span>FRANCE</span>
+            </p>
           </div>
         </div>
       </div>
-      <div className=" border-t-2 w-full flex items-center justify-center mt-6 pt-4">
-        <h3>© Copyright 2023 COM IN ARIEGE</h3>
+      <div className="border-t-2 w-full flex items-center justify-center mt-6 pt-4">
+        <p className="font-semibold opacity-60">
+          © Copyright 2023 COM IN ARIEGE
+        </p>
       </div>
     </div>
   );

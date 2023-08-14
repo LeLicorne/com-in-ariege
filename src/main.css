@@ -69,13 +69,13 @@
 }
 
 .footerCategory {
-  @apply flex flex-col gap-4;
+  @apply flex md:flex-col justify-between md:justify-normal gap-2;
 }
 
 .footerTitle {
-  @apply text-xl font-semibold;
+  @apply text-xl leading-6 font-semibold;
 }
 
 .footerArguments {
-  @apply flex flex-col gap-2;
+  @apply flex flex-col text-right md:text-left gap-2 opacity-60;
 }
