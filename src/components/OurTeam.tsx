@@ -4,7 +4,7 @@ function OurTeam() {
   return (
     <div className=" w-full h-auto flex flex-col gap-8 md:gap-14">
       <div className=" w-full flex">
-        <h2 className=" font-semibold text-3xl sm:text-4xl">Notre équipe</h2>
+        <h2 className="content-title">Notre équipe</h2>
       </div>
       <div className="flex flex-col lg:flex-row w-full justify-evenly gap-4 xl:gap-[7%]">
         <TeamMemberCard

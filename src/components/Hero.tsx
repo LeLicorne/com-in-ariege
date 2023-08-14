@@ -5,7 +5,7 @@ function Hero() {
     <>
       <div
         id="mountainBackground"
-        className="absolute h-screen w-full top-16 left-0 bg-[url('/src\assets\mountains.png')] bg-cover bg-center opacity-50"
+        className="absolute h-screen w-full top-16 left-0 bg-[url('src/assets/mountains.png')] bg-cover bg-center opacity-50"
       />
       <div className="h-screen w-full flex flex-col items-center justify-center z-10 gap-10">
         <div className="flex flex-col">
@@ -32,7 +32,7 @@ function Hero() {
         </form>
       </div>
       <div className="w-full flex items-center justify-center py-6 z-10">
-        <h2 className="font-semibold text-[3vw] lg:text-4xl">Nos services</h2>
+        <h2 className="content-title">Nos services</h2>
       </div>
     </>
   );

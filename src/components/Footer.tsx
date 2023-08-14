@@ -15,18 +15,32 @@ function Footer() {
         <div className="footerCategory">
           <h3 className=" footerTitle">Nos services</h3>
           <div className=" footerArguments">
-            <Link to="/catalogue">Aménagement</Link>
-            <Link to="/communication">Communication</Link>
-            <Link to="/catalogue">Signalétique</Link>
+            <Link to="/catalogue" className="hover:underline">
+              Aménagement
+            </Link>
+            <Link to="/communication" className="hover:underline">
+              Communication
+            </Link>
+            <Link to="/catalogue" className="hover:underline">
+              Signalétique
+            </Link>
           </div>
         </div>
         <div className="footerCategory">
           <h3 className=" footerTitle">Navigation</h3>
           <div className=" footerArguments">
-            <Link to="/">Accueil</Link>
-            <Link to="/catalogue">Catalogue</Link>
-            <Link to="/à-propos">À propos</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/" className="hover:underline">
+              Accueil
+            </Link>
+            <Link to="/catalogue" className="hover:underline">
+              Catalogue
+            </Link>
+            <Link to="/à-propos" className="hover:underline">
+              À propos
+            </Link>
+            <Link to="/contact" className="hover:underline">
+              Contact
+            </Link>
           </div>
         </div>
         <div className="footerCategory">

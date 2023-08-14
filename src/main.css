@@ -79,3 +79,7 @@
 .footerArguments {
   @apply flex flex-col text-right md:text-left gap-0 opacity-60;
 }
+
+.content-title {
+  @apply font-semibold text-4xl;
+}

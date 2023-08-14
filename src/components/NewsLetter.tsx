@@ -24,15 +24,15 @@ function NewsLetter() {
           type="text"
           name="visitorName"
           id=""
-          placeholder=" Entrer votre nom"
-          className="w-full flex text-[2.5vw] sm:text-[2vw] lg:text-[1.7vw] xl:text-xl focus:outline-none"
+          placeholder="Entrer votre nom"
+          className="w-full flex pl-1 text-[2.5vw] sm:text-[2vw] lg:text-[1.7vw] xl:text-xl focus:outline-none"
         />
         <input
           type="text"
           name="visitorMail"
           id=""
-          placeholder=" Entrer votre mail"
-          className="w-full flex text-[2.5vw] sm:text-[2vw] lg:text-[1.7vw] xl:text-xl focus:outline-none"
+          placeholder="Entrer votre mail"
+          className="w-full flex pl-1 text-[2.5vw] sm:text-[2vw] lg:text-[1.7vw] xl:text-xl focus:outline-none"
         />
         <button type="submit" className=" greenBtn">
           S&lsquo;inscrire

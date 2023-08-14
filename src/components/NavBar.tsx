@@ -21,7 +21,7 @@ function NavBar() {
   return (
     <nav
       className={` transition-all w-full sm:gap-0 absolute sm:block flex flex-col items-start bg-white shadow-Navbottom px-[5%] py-3 sm:py-[1%] lg:py-[15px] z-20 ${
-        nav ? ' gap-2' : 'gap-0'
+        nav ? 'gap-6' : 'gap-0'
       }`}
     >
       <div className=" flex justify-between relative w-full items-center">
@@ -52,7 +52,7 @@ function NavBar() {
 
       <div
         className={` w-full flex flex-col overflow-hidden transition-all ${
-          nav ? 'gap-1 h-28' : ' gap-0 h-0'
+          nav ? 'gap-4 h-40' : ' gap-0 h-0'
         }`}
       >
         <Link to="/" className=" navBarLink">
