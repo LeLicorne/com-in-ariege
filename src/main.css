@@ -1,5 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/ADELIA.otf');
+}
+
+.navBarLink {
+  @apply relative w-fit hover:text-black transition-colors after:transition-all after:h-[3px] after:w-0 after:bg-black/40 after:absolute after:left-1/2 after:translate-x-[-50%] after:bottom-0 hover:after:bg-black hover:after:w-full;
+}
+
+.squareGrid7cols {
+  /*The content width you use on your website*/
+  --content-width: calc(100vw * 0.86);
+
+  /* The size of the gutter */
+  --gutter: 2vw;
+
+  /* The amount of columns */
+  --columns: 7;
+
+  /* This is the calculation for the row height.  */
+  --row-size: calc(
+    (var(--content-width) - (var(--gutter) * (var(--columns) - 1))) /
+      var(--columns)
+  );
+
+  display: grid;
+
+  width: 100%;
+  max-width: var(--content-width);
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-auto-rows: var(--row-size);
+
+  grid-column-gap: var(--gutter);
+  grid-row-gap: var(--gutter);
+}
+
+.squareGrid4cols {
+  /*The content width you use on your website*/
+  --content-width: calc(100vw * 0.86);
+
+  /* The size of the gutter */
+  --gutter: 2vw;
+
+  /* The amount of columns */
+  --columns: 4;
+
+  /* This is the calculation for the row height.  */
+  --row-size: calc(
+    (var(--content-width) - (var(--gutter) * (var(--columns) - 1))) /
+      var(--columns)
+  );
+
+  display: grid;
+
+  width: 100%;
+  max-width: var(--content-width);
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-auto-rows: var(--row-size);
+
+  grid-column-gap: var(--gutter);
+  grid-row-gap: var(--gutter);
+}
+
+.greenBtn {
+  @apply flex items-center p-[1vw] lg:p-4 lg:px-6 gap-[1vw] lg:gap-4 text-[2.5vw] sm:text-lg lg:text-xl font-semibold bg-[#80CA7A];
+}
+
+.footerCategory {
+  @apply flex md:flex-col justify-between md:justify-normal gap-2;
+}
+
+.footerTitle {
+  @apply text-xl leading-6 font-semibold;
+}
+
+.footerArguments {
+  @apply flex flex-col text-right md:text-left gap-0 opacity-60;
+}
+
+.content-title {
+  @apply font-semibold text-4xl;
+}
