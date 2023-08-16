@@ -11,31 +11,35 @@ function AboutCard(options: {
 
   const imageBalise = () => {
     return (
-      <img src={image} alt="" className="w-[800px] h-[500px] object-cover" />
+      <img
+        src={image}
+        alt=""
+        className="lg:h-[300px] xl:w-[800px] xl:h-[500px] object-cover"
+      />
     );
   };
 
-  const littleCard = () => {
+  const littleCard = (icon: JSX.Element) => {
     return (
-      <div className=" grid grid-cols-4 w-full">
-        <div className=" h-40 w-40 shadow-CardLess flex justify-center items-center p-12">
-          <FaTree size=" 100%" color="#80CA7A" />
-        </div>
-        <div className=" h-40 w-40 shadow-CardLess flex justify-center items-center p-12">
-          <FaRecycle size=" 100%" color="#80CA7A" />
-        </div>
-        <div className=" h-40 w-40 shadow-CardLess flex justify-center items-center p-12">
-          <FaUserFriends size=" 100%" color="#80CA7A" />
-        </div>
-        <div className=" h-40 w-40 shadow-CardLess flex justify-center items-center p-12">
-          <FaStar size=" 100%" color="#80CA7A" />
-        </div>
+      <div className="h-28 w-28 sm:h-40 sm:w-40 shadow-CardLess flex justify-center items-center p-6 sm:p-12">
+        {icon}
+      </div>
+    );
+  };
+
+  const cardGrid = () => {
+    return (
+      <div className=" flex w-full gap-14 flex-wrap">
+        {littleCard(<FaTree size="100%" color="#80CA7A" />)}
+        {littleCard(<FaRecycle size=" 100%" color="#80CA7A" />)}
+        {littleCard(<FaUserFriends size=" 100%" color="#80CA7A" />)}
+        {littleCard(<FaStar size=" 100%" color="#80CA7A" />)}
       </div>
     );
   };
 
   return (
-    <div className=" flex flex-row gap-12 p-16">
+    <div className=" flex flex-col lg:flex-row gap-12 p-16">
       {leftImage ? imageBalise() : null}
       <div className=" flex flex-col gap-12 w-full">
         <h2 className=" text-black text-3xl font-semibold leading-7 ">
@@ -44,7 +48,7 @@ function AboutCard(options: {
         <p className="text-black text-xl font-normal leading-[30px] flex flex-col h-full justify-evenly ">
           {paragraphe}
         </p>
-        {valueCards ? littleCard() : null}
+        {valueCards ? cardGrid() : null}
       </div>
       {!leftImage ? imageBalise() : null}
     </div>
