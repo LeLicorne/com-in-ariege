@@ -1,6 +1,7 @@
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 import InfoBox from '../components/InfoBox';
+import SimpleMap from '../components/Map';
 import NavBar from '../components/NavBar';
 import Title from '../components/Title';
 
@@ -19,6 +20,7 @@ export default function Contact() {
           <ContactForm />
           <InfoBox />
         </div>
+        <SimpleMap />
       </div>
       <Footer />
     </div>
