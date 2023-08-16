@@ -2,55 +2,50 @@ import { FaTree, FaRecycle, FaStar, FaUserFriends } from 'react-icons/fa';
 
 function AboutCard(options: {
   title: string;
-  paragraphe: JSX.Element[];
+  paragraphe: string;
   image: string;
-  leftImage: boolean;
-  valueCards: boolean;
+  leftImage?: boolean;
+  valueCards?: boolean;
 }) {
   const { title, paragraphe, image, leftImage, valueCards } = options;
 
-  const imageBalise = () => {
-    return (
-      <img
-        src={image}
-        alt=""
-        className="lg:h-[300px] xl:w-[800px] xl:h-[500px] object-cover"
-      />
-    );
-  };
-
-  const littleCard = (icon: JSX.Element) => {
-    return (
-      <div className="h-28 w-28 sm:h-40 sm:w-40 shadow-CardLess flex justify-center items-center p-6 sm:p-12">
-        {icon}
-      </div>
-    );
-  };
-
-  const cardGrid = () => {
-    return (
-      <div className=" flex w-full gap-14 flex-wrap">
-        {littleCard(<FaTree size="100%" color="#80CA7A" />)}
-        {littleCard(<FaRecycle size=" 100%" color="#80CA7A" />)}
-        {littleCard(<FaUserFriends size=" 100%" color="#80CA7A" />)}
-        {littleCard(<FaStar size=" 100%" color="#80CA7A" />)}
-      </div>
-    );
-  };
+  const icons = [
+    <FaTree key={0} size="100%" color="#80CA7A" />,
+    <FaRecycle key={1} size=" 100%" color="#80CA7A" />,
+    <FaUserFriends key={2} size=" 100%" color="#80CA7A" />,
+    <FaStar key={3} size=" 100%" color="#80CA7A" />,
+  ];
 
   return (
-    <div className=" flex flex-col lg:flex-row gap-12 p-16">
-      {leftImage ? imageBalise() : null}
+    <div className=" flex flex-col lg:flex-row gap-12 p-6 lg:p-16">
+      {leftImage && (
+        <img src={image} alt="" className=" lg:w-1/2 object-cover" />
+      )}
       <div className=" flex flex-col gap-12 w-full">
         <h2 className=" text-black text-3xl font-semibold leading-7 ">
           {title}
         </h2>
-        <p className="text-black text-xl font-normal leading-[30px] flex flex-col h-full justify-evenly ">
+        <p className="text-black text-xl font-normal leading-[30px] flex flex-col h-full whitespace-break-spaces">
           {paragraphe}
         </p>
-        {valueCards ? cardGrid() : null}
+        {valueCards && (
+          <div className=" flex w-full gap-14 flex-wrap">
+            {icons.map((icon) => {
+              return (
+                <div
+                  key={icon.key}
+                  className=" h-24 w-24 xl:h-28 xl:w-28 shadow-CardLess flex justify-center items-center p-8"
+                >
+                  {icon}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
-      {!leftImage ? imageBalise() : null}
+      {!leftImage && (
+        <img src={image} alt="" className=" lg:w-1/2 object-cover" />
+      )}
     </div>
   );
 }
