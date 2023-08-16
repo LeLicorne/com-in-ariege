@@ -20,7 +20,7 @@ function NavBar() {
 
   return (
     <nav
-      className={` transition-all w-full sm:gap-0 absolute sm:block flex flex-col items-start bg-white shadow-Navbottom px-[5%] py-3 sm:py-[1%] lg:py-[15px] z-20 ${
+      className={` transition-all w-full sm:gap-0 absolute sm:static flex flex-col items-start bg-white shadow-Navbottom px-[5%] py-3 sm:py-[1%] lg:py-[15px] z-20 ${
         nav ? 'gap-6' : 'gap-0'
       }`}
     >
@@ -37,7 +37,7 @@ function NavBar() {
           <Link to="/catalogue" className=" navBarLink">
             CATALOGUE
           </Link>
-          <Link to="/a-propos" className=" navBarLink whitespace-nowrap">
+          <Link to="/à-propos" className=" navBarLink whitespace-nowrap">
             À PROPOS
           </Link>
           <Link to="/contact" className=" navBarLink">
