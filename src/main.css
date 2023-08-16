@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 .navBarLink {
-  @apply
-  relative
+  @apply relative
   w-fit
 
   transition-colors
@@ -24,8 +23,7 @@
 }
 
 .navBarActiveLink {
-  @apply
-  relative
+  @apply relative
   w-fit
   text-black
 
