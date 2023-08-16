@@ -11,6 +11,8 @@ module.exports = {
       },
       colors: {
         primary: '#80CA7A',
+        success: '#1DA1F2',
+        error: '#FF9494',
       },
     },
   },

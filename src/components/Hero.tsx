@@ -25,7 +25,7 @@ function Hero() {
             placeholder="Recherche"
             className="flex w-full text-[2vw] lg:text-xl focus:outline-none pl-4 sm:pl-2 md:pl-5"
           />
-          <button type="submit" className="greenBtn">
+          <button type="submit" className="button-primary">
             <BiSearch size={20} />
             Rechercher
           </button>

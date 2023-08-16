@@ -37,5 +37,6 @@ module.exports = {
         namedComponents: ['arrow-function', 'function-declaration'],
       },
     ],
+    'no-nested-ternary': 0,
   },
 };
