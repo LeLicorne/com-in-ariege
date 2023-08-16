@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Poppins';
-  src: url('../public/fonts/ADELIA.otf');
-}
-
 .navBarLink {
   @apply relative w-fit hover:text-black transition-colors after:transition-all after:h-[3px] after:w-0 after:bg-black/40 after:absolute after:left-1/2 after:translate-x-[-50%] after:bottom-0 hover:after:bg-black hover:after:w-full;
 }
@@ -80,9 +75,17 @@
 }
 
 .footerArguments {
-  @apply flex flex-col text-right md:text-left gap-0 opacity-60;
+  @apply flex flex-col text-right md:text-left gap-0 md:gap-2 opacity-60;
 }
 
 .content-title {
   @apply font-semibold text-4xl;
+}
+
+.page-title {
+  @apply font-semibold text-5xl text-black;
+}
+
+.page-subtitle {
+  @apply font-normal text-black/60;
 }
