@@ -47,7 +47,7 @@ export default function ContactForm() {
       <Input title="Email" placeholder="adresse@mail.fr" name="mail" />
       <Input
         title="Numéro de téléphone"
-        placeholder="+33(0) 6 77 88 99 11"
+        placeholder="+33(0) 6 66 77 88 99"
         name="phone"
       />
       <Input
