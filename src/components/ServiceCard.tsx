@@ -5,7 +5,7 @@ function ServiceCard(options: {
 }) {
   const { image, title, description } = options;
   return (
-    <div className="overflow-hidden w-full h-[18vw] lg:h-auto shadow-Card flex lg:flex-col justify-start bg-white">
+    <div className="overflow-hidden w-full h-[18vw] lg:h-auto shadow-card flex lg:flex-col justify-start bg-white">
       <img
         src={image}
         alt=""
