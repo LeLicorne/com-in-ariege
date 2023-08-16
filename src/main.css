@@ -3,7 +3,40 @@
 @tailwind utilities;
 
 .navBarLink {
-  @apply relative w-fit hover:text-black transition-colors after:transition-all after:h-[3px] after:w-0 after:bg-black/40 after:absolute after:left-1/2 after:translate-x-[-50%] after:bottom-0 hover:after:bg-black hover:after:w-full;
+  @apply
+  relative
+  w-fit
+
+  transition-colors
+
+  hover:text-black
+  hover:after:bg-black
+  hover:after:w-full
+
+  after:transition-all
+  after:h-[3px]
+  after:w-0
+  after:bg-black/40
+  after:absolute
+  after:left-1/2
+  after:translate-x-[-50%]
+  after:bottom-0;
+}
+
+.navBarActiveLink {
+  @apply
+  relative
+  w-fit
+  text-black
+
+  after:w-full
+  after:transition-all
+  after:h-[3px]
+  after:bg-black
+  after:absolute
+  after:left-1/2
+  after:translate-x-[-50%]
+  after:bottom-0;
 }
 
 .squareGrid7cols {

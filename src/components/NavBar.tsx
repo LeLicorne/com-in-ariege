@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function FaXmark() {
   return (
@@ -13,6 +13,8 @@ function FaXmark() {
 }
 
 function NavBar() {
+  const loc = useLocation();
+
   const [nav, setNav] = useState(false);
   const handleNav = () => {
     setNav(!nav);
@@ -34,16 +36,36 @@ function NavBar() {
           </Link>
         </div>
         <div className="hidden sm:flex flex-row w-full justify-end gap-[7%] font-medium text-black/40 text-[2vw] lg:text-xl">
-          <Link to="/" className=" navBarLink">
+          <Link
+            to="/"
+            className={loc.pathname === '/' ? 'navBarActiveLink' : 'navBarLink'}
+          >
             ACCUEIL
           </Link>
-          <Link to="/catalogue" className=" navBarLink">
+          <Link
+            to="/catalogue"
+            className={
+              loc.pathname === '/catalogue' ? 'navBarActiveLink' : 'navBarLink'
+            }
+          >
             CATALOGUE
           </Link>
-          <Link to="/à-propos" className=" navBarLink whitespace-nowrap">
+          <Link
+            to="/a-propos"
+            className={
+              loc.pathname === '/a-propos'
+                ? 'navBarActiveLink whitespace-nowrap'
+                : 'navBarLink whitespace-nowrap'
+            }
+          >
             À PROPOS
           </Link>
-          <Link to="/contact" className=" navBarLink">
+          <Link
+            to="/contact"
+            className={
+              loc.pathname === '/contact' ? 'navBarActiveLink' : 'navBarLink'
+            }
+          >
             CONTACT
           </Link>
         </div>
@@ -64,7 +86,7 @@ function NavBar() {
         <Link to="/catalogue" className=" navBarLink">
           CATALOGUE
         </Link>
-        <Link to="/à-propos" className=" navBarLink whitespace-nowrap">
+        <Link to="/a-propos" className=" navBarLink whitespace-nowrap">
           À PROPOS
         </Link>
         <Link to="/contact" className=" navBarLink">
