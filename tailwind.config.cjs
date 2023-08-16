@@ -5,12 +5,12 @@ module.exports = {
     extend: {
       boxShadow: {
         Navbottom: '0px 4px 4px 0px #F7F7F7;',
-        Card: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;',
+        card: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;',
         CardLess:
           'rgba(50, 50, 93, 0.25) 0px 3px 17px -5px, rgba(0, 0, 0, 0.3) 0px 3px 11px -8px;',
       },
       colors: {
-        'black/65': 'rgba(0,0,0,0.65)',
+        primary: '#80CA7A',
       },
     },
   },

@@ -9,7 +9,7 @@ function TeamMemberCard(options: {
 }) {
   const { image, name, position, description } = options;
   return (
-    <div className="w-full h-[20vw] lg:h-[19vw] shadow-Card flex flex-row items-center justify-between pr-5 lg:pr-5">
+    <div className="w-full h-[20vw] lg:h-[19vw] shadow-card flex flex-row items-center justify-between pr-5 lg:pr-5">
       <img
         src={image}
         alt=""
