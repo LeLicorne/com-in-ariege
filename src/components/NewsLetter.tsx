@@ -1,4 +1,26 @@
+import { useState } from 'react';
+import { useSubNewsletterMutation } from '../redux/api';
+
 function NewsLetter() {
+  const [subNewsletter, res] = useSubNewsletterMutation();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [alert, setAlert] = useState('');
+
+  const mail: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+  async function subToNewsletter() {
+    if (name.length <= 1) {
+      setAlert('name');
+      return;
+    }
+    if (!mail.test(email)) {
+      setAlert('email');
+      return;
+    }
+    await subNewsletter({ name, email });
+  }
+  console.log(alert);
   return (
     <div className="flex flex-col w-full items-center">
       <div className="w-full h-[30vh] sm:h-[50vh] flex flex-col relative items-center justify-center text-white overflow-hidden">
@@ -22,20 +44,45 @@ function NewsLetter() {
       >
         <input
           type="text"
-          name="visitorName"
+          name="name"
           id=""
           placeholder="Entrer votre nom"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           className="w-full flex pl-1 text-[2.5vw] sm:text-[2vw] lg:text-[1.7vw] xl:text-xl focus:outline-none"
         />
         <input
           type="text"
-          name="visitorMail"
+          name="email"
           id=""
           placeholder="Entrer votre mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full flex pl-1 text-[2.5vw] sm:text-[2vw] lg:text-[1.7vw] xl:text-xl focus:outline-none"
         />
-        <button type="submit" className=" greenBtn">
-          S&lsquo;inscrire
+        <button
+          disabled={!(mail.test(email) && name.length > 1)}
+          type="button"
+          className={
+            res.isSuccess
+              ? 'button-success'
+              : res.isError
+              ? 'button-error'
+              : 'button-primary'
+          }
+          style={{
+            opacity:
+              (mail.test(email) && name.length > 1) || (!name && !email)
+                ? 1
+                : 0.8,
+          }}
+          onClick={subToNewsletter}
+        >
+          {res.isSuccess
+            ? 'Inscrit !'
+            : res.isError
+            ? 'Erreur !'
+            : "S'inscrire"}
         </button>
       </form>
     </div>

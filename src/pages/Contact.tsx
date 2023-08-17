@@ -7,7 +7,7 @@ import Title from '../components/Title';
 
 export default function Contact() {
   return (
-    <div className="flex flex-col w-full h-auto font-[Poppins]">
+    <div className="flex flex-col w-full h-auto">
       <NavBar />
       <div className="flex flex-col gap-20 lg:gap-32 px-[7%]">
         <Title
