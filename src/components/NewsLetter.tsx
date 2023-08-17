@@ -61,6 +61,7 @@ function NewsLetter() {
           className="w-full flex pl-1 text-[2.5vw] sm:text-[2vw] lg:text-[1.7vw] xl:text-xl focus:outline-none"
         />
         <button
+          disabled={!(mail.test(email) && name.length > 1)}
           type="button"
           className={
             res.isSuccess
@@ -69,6 +70,12 @@ function NewsLetter() {
               ? 'button-error'
               : 'button-primary'
           }
+          style={{
+            opacity:
+              (mail.test(email) && name.length > 1) || (!name && !email)
+                ? 1
+                : 0.8,
+          }}
           onClick={subToNewsletter}
         >
           {res.isSuccess
