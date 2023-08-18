@@ -22,6 +22,7 @@ export type Product = {
   name: string;
   price: number;
   stock: number;
+  description: string;
   isFeatured: boolean;
   isArchived: boolean;
   images?: Image[];
