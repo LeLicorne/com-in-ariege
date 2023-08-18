@@ -1,4 +1,5 @@
-import CategoryCard from '../components/CategoryCard';
+import { useState } from 'react';
+import Categories from '../components/Categories';
 import Filter from '../components/Filter';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
@@ -6,6 +7,7 @@ import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
 
 function Shop() {
+  const [selectedCat, setSelectedCat] = useState<string>('');
   function sortAvailabe() {
     console.log('sortAvailable');
   }
@@ -32,11 +34,7 @@ function Shop() {
         />
         <SearchBar />
       </div>
-      <div className="flex flex-row w-full px-[7%] py-8 gap-8 overflow-x-scroll scrollbar-hide">
-        <CategoryCard name="Aménagements" bg="telesiege.jpg" selected={false} />
-        <CategoryCard name="Aménagements" bg="telesiege.jpg" selected={false} />
-        <CategoryCard name="Aménagements" bg="telesiege.jpg" selected={false} />
-      </div>
+      <Categories selectedCat={selectedCat} setSelectedCat={setSelectedCat} />
       <div className="flex flex-col gap-8 px-[7%] mt-8">
         <h2 className="text-black text-4xl font-semibold">Signalétique</h2>
         <div className="flex flex-col sm:flex-row w-full gap-6 sm:justify-between">

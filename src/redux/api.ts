@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { NewsletterSub } from '../models/contact';
-import { Product } from '../models/shop';
+import { Category, Product } from '../models/shop';
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_SERVER_URL }),
   reducerPath: 'shopApi',
-  tagTypes: ['Product', 'Contact'],
+  tagTypes: ['Category', 'Product', 'Contact'],
   endpoints: (build) => ({
     getFeatured: build.query<Product[], void>({
       query: () => 'shop/products/featured',
@@ -19,7 +19,20 @@ export const api = createApi({
       }),
       invalidatesTags: ['Contact'],
     }),
+    getCategories: build.query<Category[], void>({
+      query: () => {
+        return {
+          url: 'shop/categories',
+          method: 'GET',
+        };
+      },
+      providesTags: ['Category'],
+    }),
   }),
 });
 
-export const { useGetFeaturedQuery, useSubNewsletterMutation } = api;
+export const {
+  useGetCategoriesQuery,
+  useGetFeaturedQuery,
+  useSubNewsletterMutation,
+} = api;

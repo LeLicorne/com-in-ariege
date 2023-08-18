@@ -1,26 +1,39 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { Category } from '../models/shop';
+
 export default function CategoryCard(options: {
-  name: string;
-  bg: string;
+  category: Category;
   selected: boolean;
+  setSelected: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const { name, bg, selected } = options;
+  const { category, selected, setSelected } = options;
+
+  function handleClick() {
+    setSelected(category.id);
+  }
   return (
     <div
       className={`
-      bg-[url('src/assets/${bg}')]
+      relative
       w-[210px]
       h-[300px]
       sm:w-[245px]
       sm:h-[350px]
       rounded-3xl
       overflow-hidden
-      bg-cover
-      bg-center
       shadow-card
       flex-shrink-0
       `}
     >
+      <img
+        src={`src/assets/categories/${category.imageUrl}`}
+        alt="category"
+        className="absolute h-full object-cover"
+      />
       <span
+        onClick={handleClick}
+        role="button"
+        tabIndex={0}
         className={`
         flex
         w-full
@@ -37,7 +50,7 @@ export default function CategoryCard(options: {
         hover:backdrop-blur-none
         `}
       >
-        {name}
+        {category.name}
       </span>
     </div>
   );
