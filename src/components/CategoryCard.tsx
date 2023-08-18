@@ -28,7 +28,7 @@ export default function CategoryCard(options: {
       <img
         src={`src/assets/categories/${category.imageUrl}`}
         alt="category"
-        className="absolute h-full object-cover"
+        className="absolute w-full h-full object-cover"
       />
       <span
         onClick={handleClick}
