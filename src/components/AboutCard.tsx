@@ -18,9 +18,7 @@ function AboutCard(options: {
 
   return (
     <div className="flex flex-col lg:flex-row gap-12 p-6 lg:p-16">
-      {leftImage && (
-        <img src={image} alt="" className="lg:w-1/2 object-cover" />
-      )}
+      {leftImage && <img src={image} alt="" className="lg:w-1/2 object-cover" />}
       <div className="flex flex-col gap-12 w-full">
         <h2 className="text-black text-3xl font-semibold">{title}</h2>
         <p className="flex flex-col h-full text-black text-xl text-justify font-normal leading-[30px] whitespace-break-spaces">
@@ -41,9 +39,7 @@ function AboutCard(options: {
           </div>
         )}
       </div>
-      {!leftImage && (
-        <img src={image} alt="" className="lg:w-1/2 object-cover" />
-      )}
+      {!leftImage && <img src={image} alt="" className="lg:w-1/2 object-cover" />}
     </div>
   );
 }

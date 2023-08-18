@@ -57,9 +57,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t-2 w-full flex items-center justify-center mt-6 pt-4">
-        <p className="font-semibold opacity-60">
-          © Copyright 2023 COM IN ARIEGE
-        </p>
+        <p className="font-semibold opacity-60">© Copyright 2023 COM IN ARIEGE</p>
       </div>
     </div>
   );

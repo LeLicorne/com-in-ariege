@@ -31,8 +31,4 @@ export const api = createApi({
   }),
 });
 
-export const {
-  useGetCategoriesQuery,
-  useGetFeaturedQuery,
-  useSubNewsletterMutation,
-} = api;
+export const { useGetCategoriesQuery, useGetFeaturedQuery, useSubNewsletterMutation } = api;

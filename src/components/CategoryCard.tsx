@@ -3,14 +3,11 @@ import { Category } from '../models/shop';
 
 export default function CategoryCard(options: {
   category: Category;
-  selected: boolean;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  selectedCategory: Category | undefined;
+  handleClick(category: Category): void;
 }) {
-  const { category, selected, setSelected } = options;
+  const { category, selectedCategory, handleClick } = options;
 
-  function handleClick() {
-    setSelected(category.id);
-  }
   return (
     <div
       className={`
@@ -28,10 +25,10 @@ export default function CategoryCard(options: {
       <img
         src={`src/assets/categories/${category.imageUrl}`}
         alt="category"
-        className="absolute h-full object-cover"
+        className="absolute w-full h-full object-cover"
       />
       <span
-        onClick={handleClick}
+        onClick={() => handleClick(category)}
         role="button"
         tabIndex={0}
         className={`
@@ -46,7 +43,7 @@ export default function CategoryCard(options: {
         text-2xl
         transition-all
         cursor-pointer
-        ${selected ? 'backdrop-blur-none' : 'backdrop-blur-[6px]'}
+        ${selectedCategory?.id === category.id ? 'backdrop-blur-none' : 'backdrop-blur-[6px]'}
         hover:backdrop-blur-none
         `}
       >
