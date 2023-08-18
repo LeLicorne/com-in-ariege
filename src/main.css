@@ -121,10 +121,23 @@
   @apply font-semibold text-4xl;
 }
 
-.page-title {
-  @apply font-semibold text-5xl text-black;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-.page-subtitle {
-  @apply font-normal text-black/60;
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.select-chevron-hide::-ms-expand {
+  display: none;
+}
+
+.select-chevron-hide {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }
