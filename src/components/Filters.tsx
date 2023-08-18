@@ -29,9 +29,9 @@ export default function Filters(options: {
     <div className="flex flex-col sm:flex-row w-full gap-6 sm:justify-between">
       <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-6">
         <Filter name="Sous-catégorie" options={subcategoriesOptions} subCat={subCat} />
-        <Filter name="Disponibilité" options={availableOptions} />
+        <Filter name="Disponibilité" options={availableOptions} subCat={null} />
       </div>
-      <Filter name="Trier par" options={[]} />
+      <Filter name="Trier par" options={[]} subCat={null} />
     </div>
   );
 }

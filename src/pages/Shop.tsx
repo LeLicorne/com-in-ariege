@@ -13,7 +13,6 @@ function Shop() {
   const [availability, setAvailability] = useState<'unsort' | 'available' | 'unavailable'>('unsort');
 
   console.log(availability);
-
   return (
     <div className="flex flex-col w-full h-auto">
       <NavBar />
