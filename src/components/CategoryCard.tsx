@@ -3,13 +3,17 @@ import { Category } from '../models/shop';
 
 export default function CategoryCard(options: {
   category: Category;
-  selected: boolean;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  selectedCategory: Category | undefined;
+  setSelected: React.Dispatch<React.SetStateAction<Category | undefined>>;
 }) {
-  const { category, selected, setSelected } = options;
+  const { category, selectedCategory, setSelected } = options;
 
   function handleClick() {
-    setSelected(category.id);
+    if (selectedCategory?.id === category.id) {
+      setSelected(undefined);
+    } else {
+      setSelected(category);
+    }
   }
   return (
     <div
@@ -46,7 +50,11 @@ export default function CategoryCard(options: {
         text-2xl
         transition-all
         cursor-pointer
-        ${selected ? 'backdrop-blur-none' : 'backdrop-blur-[6px]'}
+        ${
+          selectedCategory?.id === category.id
+            ? 'backdrop-blur-none'
+            : 'backdrop-blur-[6px]'
+        }
         hover:backdrop-blur-none
         `}
       >

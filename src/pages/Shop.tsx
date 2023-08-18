@@ -5,9 +5,12 @@ import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
+import { Category } from '../models/shop';
 
 function Shop() {
-  const [selectedCat, setSelectedCat] = useState<string>('');
+  const [selectedCat, setSelectedCat] = useState<Category | undefined>(
+    undefined
+  );
   function sortAvailabe() {
     console.log('sortAvailable');
   }

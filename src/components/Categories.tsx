@@ -1,10 +1,11 @@
 import ContentLoader from 'react-content-loader';
+import { Category } from '../models/shop';
 import { useGetCategoriesQuery } from '../redux/api';
 import CategoryCard from './CategoryCard';
 
 export default function Categories(options: {
-  selectedCat: string;
-  setSelectedCat: React.Dispatch<React.SetStateAction<string>>;
+  selectedCat: Category | undefined;
+  setSelectedCat: React.Dispatch<React.SetStateAction<Category | undefined>>;
 }) {
   const { selectedCat, setSelectedCat } = options;
   const { data: categories, isLoading } = useGetCategoriesQuery();
@@ -39,7 +40,7 @@ export default function Categories(options: {
           <CategoryCard
             key={category.id}
             category={category}
-            selected={selectedCat === category.id}
+            selectedCategory={selectedCat}
             setSelected={setSelectedCat}
           />
         );
