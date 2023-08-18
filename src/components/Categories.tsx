@@ -1,14 +1,24 @@
 import ContentLoader from 'react-content-loader';
-import { Category } from '../models/shop';
+import { Category, Subcategory } from '../models/shop';
 import { useGetCategoriesQuery } from '../redux/api';
 import CategoryCard from './CategoryCard';
 
 export default function Categories(options: {
   selectedCat: Category | undefined;
   setSelectedCat: React.Dispatch<React.SetStateAction<Category | undefined>>;
+  setSelectedSubCat: React.Dispatch<React.SetStateAction<Subcategory | undefined>>;
 }) {
-  const { selectedCat, setSelectedCat } = options;
+  const { selectedCat, setSelectedCat, setSelectedSubCat } = options;
   const { data: categories, isLoading } = useGetCategoriesQuery();
+
+  function handleClick(category: Category) {
+    setSelectedSubCat(undefined);
+    if (selectedCat?.id === category.id) {
+      setSelectedCat(undefined);
+    } else {
+      setSelectedCat(category);
+    }
+  }
 
   if (isLoading) {
     return (
@@ -41,7 +51,7 @@ export default function Categories(options: {
             key={category.id}
             category={category}
             selectedCategory={selectedCat}
-            setSelected={setSelectedCat}
+            handleClick={(e) => handleClick(e)}
           />
         );
       })}

@@ -4,17 +4,10 @@ import { Category } from '../models/shop';
 export default function CategoryCard(options: {
   category: Category;
   selectedCategory: Category | undefined;
-  setSelected: React.Dispatch<React.SetStateAction<Category | undefined>>;
+  handleClick(category: Category): void;
 }) {
-  const { category, selectedCategory, setSelected } = options;
+  const { category, selectedCategory, handleClick } = options;
 
-  function handleClick() {
-    if (selectedCategory?.id === category.id) {
-      setSelected(undefined);
-    } else {
-      setSelected(category);
-    }
-  }
   return (
     <div
       className={`
@@ -35,7 +28,7 @@ export default function CategoryCard(options: {
         className="absolute w-full h-full object-cover"
       />
       <span
-        onClick={handleClick}
+        onClick={() => handleClick(category)}
         role="button"
         tabIndex={0}
         className={`
@@ -50,11 +43,7 @@ export default function CategoryCard(options: {
         text-2xl
         transition-all
         cursor-pointer
-        ${
-          selectedCategory?.id === category.id
-            ? 'backdrop-blur-none'
-            : 'backdrop-blur-[6px]'
-        }
+        ${selectedCategory?.id === category.id ? 'backdrop-blur-none' : 'backdrop-blur-[6px]'}
         hover:backdrop-blur-none
         `}
       >

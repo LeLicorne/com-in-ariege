@@ -1,31 +1,18 @@
 import { useState } from 'react';
 import Categories from '../components/Categories';
-import Filter from '../components/Filter';
+import Filters from '../components/Filters';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
-import { Category } from '../models/shop';
+import { Category, Subcategory } from '../models/shop';
 
 function Shop() {
-  const [selectedCat, setSelectedCat] = useState<Category | undefined>(
-    undefined
-  );
-  function sortAvailabe() {
-    console.log('sortAvailable');
-  }
-  function sortUnavailable() {
-    console.log('sortUnavailable');
-  }
-  function unsortAvailable() {
-    console.log('unsortAvailable');
-  }
+  const [selectedCat, setSelectedCat] = useState<Category | undefined>(undefined);
+  const [selectedSubCat, setSelectedSubCat] = useState<Subcategory | undefined>(undefined);
+  const [availability, setAvailability] = useState<'unsort' | 'available' | 'unavailable'>('unsort');
 
-  const availableOptions = [
-    { name: 'Tous', f: unsortAvailable },
-    { name: 'Disponible', f: sortAvailabe },
-    { name: 'Indisponible', f: sortUnavailable },
-  ];
+  console.log(availability);
 
   return (
     <div className="flex flex-col w-full h-auto">
@@ -37,16 +24,15 @@ function Shop() {
         />
         <SearchBar />
       </div>
-      <Categories selectedCat={selectedCat} setSelectedCat={setSelectedCat} />
+      <Categories selectedCat={selectedCat} setSelectedCat={setSelectedCat} setSelectedSubCat={setSelectedSubCat} />
       <div className="flex flex-col gap-8 px-[7%] mt-8">
-        <h2 className="text-black text-4xl font-semibold">Signalétique</h2>
-        <div className="flex flex-col sm:flex-row w-full gap-6 sm:justify-between">
-          <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-6">
-            <Filter name="Sous-catégorie" options={[]} />
-            <Filter name="Disponibilité" options={availableOptions} />
-          </div>
-          <Filter name="Trier par" options={[]} />
-        </div>
+        <h2 className="text-black text-4xl font-semibold">{selectedCat ? selectedCat.name : 'Tous'}</h2>
+        <Filters
+          subCat={selectedSubCat}
+          subCats={selectedCat?.subcategories}
+          setSubcategory={setSelectedSubCat}
+          setAvailability={setAvailability}
+        />
       </div>
       <Footer />
     </div>
