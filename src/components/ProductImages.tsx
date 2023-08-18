@@ -7,26 +7,10 @@ function ProductImages(options: { imgs: { img: string; name: string }[] }) {
         <img src={`src/assets/${imgs[0].img}`} alt="" />
       </div>
       <div className="flex gap-5 object-cover w-full overflow-hidden">
-        <img
-          src={`src/assets/${imgs[1].img}`}
-          alt=""
-          className=" bg-secondary w-full p-3"
-        />
-        <img
-          src={`src/assets/${imgs[2].img}`}
-          alt=""
-          className=" bg-secondary w-full p-3"
-        />
-        <img
-          src={`src/assets/${imgs[3].img}`}
-          alt=""
-          className=" bg-secondary w-full p-3"
-        />
-        <img
-          src={`src/assets/${imgs[4].img}`}
-          alt=""
-          className=" bg-secondary w-full p-3"
-        />
+        <img src={`src/assets/${imgs[1].img}`} alt="" className=" bg-secondary w-full p-3" />
+        <img src={`src/assets/${imgs[2].img}`} alt="" className=" bg-secondary w-full p-3" />
+        <img src={`src/assets/${imgs[3].img}`} alt="" className=" bg-secondary w-full p-3" />
+        <img src={`src/assets/${imgs[4].img}`} alt="" className=" bg-secondary w-full p-3" />
       </div>
     </div>
   );
