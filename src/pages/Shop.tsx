@@ -28,6 +28,7 @@ function Shop() {
   const handleChangePage = (next: boolean) => {
     const pageNum = parseInt(page, 10);
     setSearchParams(`page=${(pageNum + (next ? 1 : -1)).toString()}`);
+    document.getElementById('productContainer')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   console.log(availability);
@@ -43,7 +44,7 @@ function Shop() {
         <SearchBar />
       </div>
       <Categories selectedCat={selectedCat} setSelectedCat={setSelectedCat} setSelectedSubCat={setSelectedSubCat} />
-      <div className="flex flex-col gap-8 px-[7%] mt-8">
+      <div id="productContainer" className="flex flex-col gap-8 px-[7%] mt-8">
         <h2 className="text-black text-4xl font-semibold">{selectedCat ? selectedCat.name : 'Tous'}</h2>
         <Filters
           subCat={selectedSubCat}
