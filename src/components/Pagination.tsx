@@ -34,9 +34,18 @@ const FiChevronLeft = () => {
   );
 };
 
-export default function Pagination(options: { page: string; handleChangePage: (next: boolean) => void }) {
-  const { page, handleChangePage } = options;
+export default function Pagination(options: {
+  page: string;
+  handleChangePage: (next: boolean) => void;
+  nbProducts: number | undefined;
+}) {
+  const { page, handleChangePage, nbProducts } = options;
   const pageNum = parseInt(page, 10);
+
+  if (!nbProducts) {
+    return null;
+  }
+
   return (
     <div className="flex justify-center gap-3">
       <button
@@ -65,7 +74,7 @@ export default function Pagination(options: { page: string; handleChangePage: (n
         type="button"
         onClick={() => handleChangePage(true)}
         className="flex items-center justify-center w-10 aspect-square bg-secondary rounded-full"
-        style={{ display: page >= '3' ? 'none' : 'block' }}
+        style={{ display: page >= (nbProducts / 25).toString() ? 'none' : 'block' }}
       >
         {pageNum + 1}
       </button>
@@ -73,7 +82,7 @@ export default function Pagination(options: { page: string; handleChangePage: (n
         type="button"
         onClick={() => handleChangePage(true)}
         className="flex items-center justify-center w-10 aspect-square text-primary border-[1px] border-primary rounded-full"
-        style={{ display: page >= '3' ? 'none' : '' }}
+        style={{ display: page >= (nbProducts / 25).toString() ? 'none' : '' }}
       >
         <FiChevronRight />
       </button>

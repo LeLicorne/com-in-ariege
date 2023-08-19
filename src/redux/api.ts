@@ -35,7 +35,10 @@ export const api = createApi({
       },
       providesTags: ['Product'],
     }),
-    getProducts: build.query<Product[], { categoryId?: string; subcategoryId?: string; page: string }>({
+    getProducts: build.query<
+      { products: Product[]; count: number },
+      { categoryId?: string; subcategoryId?: string; page: string }
+    >({
       query: ({ categoryId, subcategoryId, page }) => {
         if (!page) {
           throw new Error('Page is required');

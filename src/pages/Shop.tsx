@@ -19,7 +19,7 @@ function Shop() {
 
   const page = searchParams.get('page') || '1';
 
-  const { data: products, isLoading } = useGetProductsQuery({
+  const { data, isLoading } = useGetProductsQuery({
     categoryId: selectedCat?.id,
     subcategoryId: selectedSubCat?.id,
     page,
@@ -28,7 +28,7 @@ function Shop() {
   const handleChangePage = (next: boolean) => {
     const pageNum = parseInt(page, 10);
     setSearchParams(`page=${(pageNum + (next ? 1 : -1)).toString()}`);
-    document.getElementById('productContainer')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('productContainer')?.scrollIntoView();
   };
 
   console.log(availability);
@@ -52,8 +52,8 @@ function Shop() {
           setSubcategory={setSelectedSubCat}
           setAvailability={setAvailability}
         />
-        <Products products={products} isLoading={isLoading} />
-        <Pagination page={page} handleChangePage={handleChangePage} />
+        <Products products={data?.products} isLoading={isLoading} />
+        <Pagination page={page} handleChangePage={handleChangePage} nbProducts={data?.count} />
       </div>
       <Footer />
     </div>
