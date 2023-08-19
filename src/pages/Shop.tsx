@@ -7,11 +7,18 @@ import Products from '../components/Products';
 import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
 import { Category, Subcategory } from '../models/shop';
+import { useGetProductsQuery } from '../redux/api';
 
 function Shop() {
   const [selectedCat, setSelectedCat] = useState<Category | undefined>(undefined);
   const [selectedSubCat, setSelectedSubCat] = useState<Subcategory | undefined>(undefined);
   const [availability, setAvailability] = useState<'unsort' | 'available' | 'unavailable'>('unsort');
+
+  const { data: products, isLoading } = useGetProductsQuery({
+    categoryId: selectedCat?.id,
+    subcategoryId: selectedSubCat?.id,
+    page: '1',
+  });
 
   console.log(availability);
 
@@ -34,7 +41,7 @@ function Shop() {
           setSubcategory={setSelectedSubCat}
           setAvailability={setAvailability}
         />
-        <Products products={selectedCat?.products} />
+        <Products products={products} isLoading={isLoading} />
       </div>
       <Footer />
     </div>

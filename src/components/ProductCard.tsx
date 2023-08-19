@@ -5,7 +5,7 @@ function ProductCard(options: { product: Product }) {
   const { product } = options;
 
   return (
-    <Link to={product.name} className="flex flex-col w-full cursor-pointer">
+    <Link to={`produit/${product.id}`} className="flex flex-col w-full cursor-pointer">
       <div className="bg-secondary p-6 w-full object-cover">
         <img
           src={`src/assets/products/${product.images?.length ? product.images[0].url : 'placeholder.jpg'}`}

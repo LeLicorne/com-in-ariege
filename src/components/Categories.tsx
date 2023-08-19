@@ -10,6 +10,7 @@ export default function Categories(options: {
 }) {
   const { selectedCat, setSelectedCat, setSelectedSubCat } = options;
   const { data: categories, isLoading } = useGetCategoriesQuery();
+  const placeholder = [1, 2, 3];
 
   function handleClick(category: Category) {
     setSelectedSubCat(undefined);
@@ -23,18 +24,19 @@ export default function Categories(options: {
   if (isLoading) {
     return (
       <div className="flex flex-row w-full px-[7%] py-8 gap-8 overflow-x-scroll scrollbar-hide">
-        <ContentLoader
-          speed={2}
-          width={932}
-          height={350}
-          viewBox="0 0 932 350"
-          backgroundColor="#f3f3f3"
-          foregroundColor="#EAEDED"
-        >
-          <rect x="0" y="0" rx="24" ry="24" width="245" height="350" />
-          <rect x="277" y="0" rx="24" ry="24" width="245" height="350" />
-          <rect x="554" y="0" rx="24" ry="24" width="245" height="350" />
-        </ContentLoader>
+        {placeholder.map((id) => {
+          return (
+            <ContentLoader
+              key={id}
+              speed={2}
+              backgroundColor="#f3f3f3"
+              foregroundColor="#EAEDED"
+              className="flex-shrink-0 w-[210px] sm:w-[245px] h-[300px] sm:h-[350px]"
+            >
+              <rect rx="24" ry="24" className="w-full h-full" />
+            </ContentLoader>
+          );
+        })}
       </div>
     );
   }

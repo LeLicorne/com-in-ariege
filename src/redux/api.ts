@@ -7,10 +7,6 @@ export const api = createApi({
   reducerPath: 'shopApi',
   tagTypes: ['Category', 'Product', 'Contact'],
   endpoints: (build) => ({
-    getFeatured: build.query<Product[], void>({
-      query: () => 'shop/products/featured',
-      providesTags: ['Product'],
-    }),
     subNewsletter: build.mutation<Response, Partial<NewsletterSub>>({
       query: (body) => ({
         url: `contact/newsletter/register`,
@@ -39,14 +35,14 @@ export const api = createApi({
       },
       providesTags: ['Product'],
     }),
-    getProducts: build.query<Product[], { page: number }>({
-      query: ({ page }) => {
+    getProducts: build.query<Product[], { categoryId?: string; subcategoryId?: string; page: string }>({
+      query: ({ categoryId, subcategoryId, page }) => {
         if (!page) {
-          throw new Error('No page selected');
+          throw new Error('Page is required');
         }
 
         return {
-          url: `shop/products/${page}`,
+          url: `shop/products/${categoryId}/${subcategoryId}/${page}`,
           method: 'GET',
         };
       },
@@ -55,10 +51,4 @@ export const api = createApi({
   }),
 });
 
-export const {
-  useGetCategoriesQuery,
-  useGetFeaturedQuery,
-  useGetProductByIdQuery,
-  useSubNewsletterMutation,
-  useGetProductsQuery,
-} = api;
+export const { useGetCategoriesQuery, useGetProductByIdQuery, useSubNewsletterMutation, useGetProductsQuery } = api;
