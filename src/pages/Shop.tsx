@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Categories from '../components/Categories';
 import Filters from '../components/Filters';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
+import Pagination from '../components/Pagination';
 import Products from '../components/Products';
 import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
@@ -10,15 +12,23 @@ import { Category, Subcategory } from '../models/shop';
 import { useGetProductsQuery } from '../redux/api';
 
 function Shop() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCat, setSelectedCat] = useState<Category | undefined>(undefined);
   const [selectedSubCat, setSelectedSubCat] = useState<Subcategory | undefined>(undefined);
   const [availability, setAvailability] = useState<'unsort' | 'available' | 'unavailable'>('unsort');
 
+  const page = searchParams.get('page') || '1';
+
   const { data: products, isLoading } = useGetProductsQuery({
     categoryId: selectedCat?.id,
     subcategoryId: selectedSubCat?.id,
-    page: '1',
+    page,
   });
+
+  const handleChangePage = (next: boolean) => {
+    const pageNum = parseInt(page, 10);
+    setSearchParams(`page=${(pageNum + (next ? 1 : -1)).toString()}`);
+  };
 
   console.log(availability);
 
@@ -42,6 +52,7 @@ function Shop() {
           setAvailability={setAvailability}
         />
         <Products products={products} isLoading={isLoading} />
+        <Pagination page={page} handleChangePage={handleChangePage} />
       </div>
       <Footer />
     </div>
