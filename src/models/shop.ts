@@ -22,9 +22,14 @@ export type Product = {
   subcategoryId: string;
   subcategory: Subcategory;
   name: string;
+  description: string;
+  reference: string;
   price: number;
   stock: number;
-  description: string;
+  specs: JSON;
+  techs: JSON;
+  ecologic: boolean;
+  warranty: string;
   isFeatured: boolean;
   isArchived: boolean;
   images?: Image[];
