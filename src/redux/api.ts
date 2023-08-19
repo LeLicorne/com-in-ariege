@@ -35,6 +35,18 @@ export const api = createApi({
         }
         return {
           url: `shop/product/${productId}`,
+        };
+      },
+      providesTags: ['Product'],
+    }),
+    getProducts: build.query<Product[], { page: number }>({
+      query: ({ page }) => {
+        if (!page) {
+          throw new Error('No page selected');
+        }
+
+        return {
+          url: `shop/products/${page}`,
           method: 'GET',
         };
       },
@@ -43,4 +55,10 @@ export const api = createApi({
   }),
 });
 
-export const { useGetCategoriesQuery, useGetFeaturedQuery, useGetProductByIdQuery, useSubNewsletterMutation } = api;
+export const {
+  useGetCategoriesQuery,
+  useGetFeaturedQuery,
+  useGetProductByIdQuery,
+  useSubNewsletterMutation,
+  useGetProductsQuery,
+} = api;
