@@ -3,6 +3,7 @@ import Categories from '../components/Categories';
 import Filters from '../components/Filters';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
+import Products from '../components/Products';
 import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
 import { Category, Subcategory } from '../models/shop';
@@ -33,6 +34,7 @@ function Shop() {
           setSubcategory={setSelectedSubCat}
           setAvailability={setAvailability}
         />
+        <Products products={selectedCat?.products} />
       </div>
       <Footer />
     </div>
