@@ -28,7 +28,19 @@ export const api = createApi({
       },
       providesTags: ['Category'],
     }),
+    getProductById: build.query<Product, { productId: string | undefined }>({
+      query: ({ productId }) => {
+        if (!productId) {
+          throw new Error('Product ID is required');
+        }
+        return {
+          url: `shop/product/${productId}`,
+          method: 'GET',
+        };
+      },
+      providesTags: ['Product'],
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery, useGetFeaturedQuery, useSubNewsletterMutation } = api;
+export const { useGetCategoriesQuery, useGetFeaturedQuery, useGetProductByIdQuery, useSubNewsletterMutation } = api;
