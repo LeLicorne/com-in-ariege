@@ -1,38 +1,15 @@
 import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
-import ProductAttributesSheat from '../components/ProductAttributesSheat';
 import ProductImages from '../components/ProductImages';
 import ProductInfo from '../components/ProductInfo';
+import ProductTechs from '../components/ProductTechs';
 import Title from '../components/Title';
 import { useGetProductByIdQuery } from '../redux/api';
 
 export default function Product() {
   const { productId } = useParams<{ productId: string }>();
   const { data: product, isLoading } = useGetProductByIdQuery({ productId });
-
-  const productAttributes = [
-    {
-      title: 'Général',
-      attrib: [
-        { attribTitle: 'Catégorie', attr: 'Signalétique' },
-        { attribTitle: 'Produit', attr: "Panneau d'information" },
-        { attribTitle: 'Prix', attr: '19,99 HT' },
-        { attribTitle: 'Référence', attr: 'ALOU123' },
-        { attribTitle: 'Variation', attr: 'Picotie' },
-        { attribTitle: 'Matière', attr: 'Alluminium' },
-        { attribTitle: 'Garentie', attr: '1 an' },
-      ],
-    },
-    {
-      title: 'Détails du produit',
-      attrib: [
-        { attribTitle: 'Visuel', attr: 'Picto' },
-        { attribTitle: 'Matière', attr: "Panneau d'information" },
-        { attribTitle: 'Diamètre', attr: '460mm' },
-      ],
-    },
-  ];
 
   if (isLoading || !product) return <div>Loading...</div>;
 
@@ -48,9 +25,9 @@ export default function Product() {
           <ProductImages images={product?.images} />
           <ProductInfo product={product} />
         </div>
-        <div className=" flex flex-col gap-10">
-          <h3 className=" font-semibold text-5xl">Fiche technique</h3>
-          <ProductAttributesSheat productAttrib={productAttributes} />
+        <div className="flex flex-col gap-10">
+          <h3 className="font-semibold text-4xl">Fiche technique</h3>
+          <ProductTechs product={product} />
         </div>
       </div>
       <Footer />
