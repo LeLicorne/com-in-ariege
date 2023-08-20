@@ -20,11 +20,11 @@ export default function ProductImages(options: { images: Image[] | undefined }) 
   }
 
   return (
-    <div className="w-full flex flex-col gap-5">
+    <div className="w-full flex flex-col gap-3 lg:gap-5">
       <div className=" w-full object-cover p-[50px] bg-secondary">
         <img src={`/src/assets/products/${images[0].url}`} alt="" />
       </div>
-      <div className="flex gap-5 object-cover w-full overflow-hidden">
+      <div className="flex gap-3 lg:gap-5 object-cover w-full overflow-hidden">
         {images.slice(1, images.length).map((image) => {
           return <img key={image.id} src={`src/assets/${image.url}`} alt="" className=" bg-secondary w-full p-3" />;
         })}
