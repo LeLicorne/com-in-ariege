@@ -1,6 +1,6 @@
 import { FaEnvelope, FaLeaf, FaShieldAlt } from 'react-icons/fa';
-import { Product } from '../models/shop';
-import { getPrice } from '../utils/shop';
+import { Product } from '../../models/shop';
+import { getPrice } from '../../utils/shop';
 
 const Spec = ({ name, value }: { name: string; value: string }) => {
   return (

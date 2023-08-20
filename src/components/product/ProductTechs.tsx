@@ -1,5 +1,5 @@
-import { Product } from '../models/shop';
-import { getPrice } from '../utils/shop';
+import { Product } from '../../models/shop';
+import { getPrice } from '../../utils/shop';
 
 const Tech = ({ name, value }: { name: string; value: string }) => {
   return (

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Product } from '../models/shop';
+import { Product } from '../../models/shop';
 
 function ProductCard(options: { product: Product }) {
   const { product } = options;

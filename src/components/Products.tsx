@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 import { Product } from '../models/shop';
-import ProductCard from './ProductCard';
+import ProductCard from './product/ProductCard';
 
 export default function Products(options: { products: Product[] | undefined; isLoading: boolean }) {
   const { products, isLoading } = options;

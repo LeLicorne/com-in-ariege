@@ -1,4 +1,4 @@
-import { Image } from '../models/shop';
+import { Image } from '../../models/shop';
 
 export default function ProductImages(options: { images: Image[] | undefined }) {
   const { images } = options;

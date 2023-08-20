@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
-import ProductImages from '../components/ProductImages';
-import ProductInfo from '../components/ProductInfo';
-import ProductTechs from '../components/ProductTechs';
 import Title from '../components/Title';
+import ProductImages from '../components/product/ProductImages';
+import ProductInfo from '../components/product/ProductInfo';
+import ProductTechs from '../components/product/ProductTechs';
 import { useGetProductByIdQuery } from '../redux/api';
 
 export default function Product() {
