@@ -25,6 +25,13 @@ function Shop() {
     page,
   });
 
+  if (data?.count) {
+    const nbPage = data.count % 25 === 0 ? data.count / 25 : Math.floor(data.count / 25) + 1;
+    if (nbPage < parseInt(page, 10)) {
+      window.location.href = '?page=1';
+    }
+  }
+
   const handleChangePage = (next: boolean) => {
     const pageNum = parseInt(page, 10);
     setSearchParams(`page=${(pageNum + (next ? 1 : -1)).toString()}`);
