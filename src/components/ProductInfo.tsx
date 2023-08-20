@@ -83,16 +83,18 @@ export default function ProductInfo(options: { product: Product }) {
         <h3 className="text-4xl font-semibold">{product.name}</h3>
         <p className="opacity-70 text-xl font-medium">{product.description}</p>
         <div className="flex flex-col gap-2 mt-6 mb-20">
-          <Spec name="Référence" value="À faire" />
+          <Spec name="Référence" value={product.reference} />
           <Spec name="Référence" value="À faire" />
           <Spec name="Référence" value="À faire" />
         </div>
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex flex-col text-base">
-          <EcoFriendly />
-          <Warranty value="1 an" />
-          <p className="self-end py-[2px] px-[4px] border-2 mt-4">Fiche technique</p>
+          {product.ecologic && <EcoFriendly />}
+          {product.warranty && <Warranty value={product.warranty} />}
+          <a href="#techs" className="self-end py-[2px] px-[4px] border-2 mt-4 hover:bg-secondary transition-all">
+            Fiche technique
+          </a>
         </div>
         <Price price={product.price} stock={product.stock} />
       </div>
