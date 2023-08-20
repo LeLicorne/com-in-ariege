@@ -28,44 +28,26 @@ function NavBar() {
     >
       <div className=" flex justify-between relative w-full items-center">
         <div className=" flex w-fit">
-          <Link
-            to="/"
-            className="text-[5vw] sm:text-[3vw] lg:text-3xl font-bold flex whitespace-nowrap"
-          >
+          <Link to="/" className="text-[5vw] sm:text-[3vw] lg:text-3xl font-bold flex whitespace-nowrap">
             COM IN ARIÈGE
           </Link>
         </div>
         <div className="hidden sm:flex flex-row w-full justify-end gap-[7%] font-medium text-black/40 text-[2vw] lg:text-xl">
-          <Link
-            to="/"
-            className={loc.pathname === '/' ? 'navBarActiveLink' : 'navBarLink'}
-          >
+          <Link to="/" className={loc.pathname === '/' ? 'navBarActiveLink' : 'navBarLink'}>
             ACCUEIL
           </Link>
-          <Link
-            to="/catalogue"
-            className={
-              loc.pathname === '/catalogue' ? 'navBarActiveLink' : 'navBarLink'
-            }
-          >
+          <Link to="/catalogue" className={loc.pathname === '/catalogue' ? 'navBarActiveLink' : 'navBarLink'}>
             CATALOGUE
           </Link>
           <Link
             to="/a-propos"
             className={
-              loc.pathname === '/a-propos'
-                ? 'navBarActiveLink whitespace-nowrap'
-                : 'navBarLink whitespace-nowrap'
+              loc.pathname === '/a-propos' ? 'navBarActiveLink whitespace-nowrap' : 'navBarLink whitespace-nowrap'
             }
           >
             À PROPOS
           </Link>
-          <Link
-            to="/contact"
-            className={
-              loc.pathname === '/contact' ? 'navBarActiveLink' : 'navBarLink'
-            }
-          >
+          <Link to="/contact" className={loc.pathname === '/contact' ? 'navBarActiveLink' : 'navBarLink'}>
             CONTACT
           </Link>
         </div>
@@ -75,11 +57,7 @@ function NavBar() {
         </div>
       </div>
 
-      <div
-        className={` w-full flex flex-col overflow-hidden transition-all ${
-          nav ? 'gap-4 h-40' : ' gap-0 h-0'
-        }`}
-      >
+      <div className={` w-full flex flex-col overflow-hidden transition-all ${nav ? 'gap-4 h-40' : ' gap-0 h-0'}`}>
         <Link to="/" className=" navBarLink">
           ACCUEIL
         </Link>

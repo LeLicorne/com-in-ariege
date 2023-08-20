@@ -63,26 +63,13 @@ function NewsLetter() {
         <button
           disabled={!(mail.test(email) && name.length > 1)}
           type="button"
-          className={
-            res.isSuccess
-              ? 'button-success'
-              : res.isError
-              ? 'button-error'
-              : 'button-primary'
-          }
+          className={res.isSuccess ? 'button-success' : res.isError ? 'button-error' : 'button-primary'}
           style={{
-            opacity:
-              (mail.test(email) && name.length > 1) || (!name && !email)
-                ? 1
-                : 0.8,
+            opacity: (mail.test(email) && name.length > 1) || (!name && !email) ? 1 : 0.8,
           }}
           onClick={subToNewsletter}
         >
-          {res.isSuccess
-            ? 'Inscrit !'
-            : res.isError
-            ? 'Erreur !'
-            : "S'inscrire"}
+          {res.isSuccess ? 'Inscrit !' : res.isError ? 'Erreur !' : "S'inscrire"}
         </button>
       </form>
     </div>

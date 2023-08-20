@@ -1,11 +1,6 @@
 import { FaPaperPlane } from 'react-icons/fa';
 
-export function Input(options: {
-  title: string;
-  placeholder: string;
-  name: string;
-  line?: number;
-}) {
+export function Input(options: { title: string; placeholder: string; name: string; line?: number }) {
   const { title, placeholder, name, line } = options;
   return (
     <div className="flex flex-col w-full gap-1 sm:gap-2">
@@ -45,17 +40,8 @@ export default function ContactForm() {
     <div className="flex flex-col w-full gap-6">
       <Input title="Nom et Prénom" placeholder="Prénom Nom" name="name" />
       <Input title="Email" placeholder="adresse@mail.fr" name="mail" />
-      <Input
-        title="Numéro de téléphone"
-        placeholder="+33(0) 6 66 77 88 99"
-        name="phone"
-      />
-      <Input
-        title="Message"
-        placeholder="Je vous écris pour ..."
-        name="message"
-        line={6}
-      />
+      <Input title="Numéro de téléphone" placeholder="+33(0) 6 66 77 88 99" name="phone" />
+      <Input title="Message" placeholder="Je vous écris pour ..." name="message" line={6} />
     </div>
   );
 }
