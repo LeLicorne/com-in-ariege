@@ -1,8 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Button = ({ icon, value }: { icon: any; value: string }) => {
+const Button = ({ icon, value, onClick }: { icon: any; value: string; onClick: any }) => {
   return (
     <button
       type="button"
+      onClick={onClick}
       className="
       inline-flex
       items-center
