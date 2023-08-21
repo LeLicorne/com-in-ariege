@@ -4,6 +4,8 @@ import InConstruction from './pages/ComingSoon';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import Product from './pages/Product';
+import Shop from './pages/Shop';
 
 const siteState: string = 'home';
 
@@ -14,8 +16,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/catalogue" element={<Shop />} />
+      <Route path="/catalogue/produit/:productId" element={<Product />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/a-propos" element={<About />} />
+      <Route path="/à-propos" element={<About />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

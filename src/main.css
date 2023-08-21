@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Poppins;
+  }
+}
 
 .navBarLink {
   @apply relative
@@ -48,10 +56,7 @@
   --columns: 7;
 
   /* This is the calculation for the row height.  */
-  --row-size: calc(
-    (var(--content-width) - (var(--gutter) * (var(--columns) - 1))) /
-      var(--columns)
-  );
+  --row-size: calc((var(--content-width) - (var(--gutter) * (var(--columns) - 1))) / var(--columns));
 
   display: grid;
 
@@ -76,10 +81,7 @@
   --columns: 4;
 
   /* This is the calculation for the row height.  */
-  --row-size: calc(
-    (var(--content-width) - (var(--gutter) * (var(--columns) - 1))) /
-      var(--columns)
-  );
+  --row-size: calc((var(--content-width) - (var(--gutter) * (var(--columns) - 1))) / var(--columns));
 
   display: grid;
 
@@ -121,10 +123,22 @@
   @apply font-semibold text-4xl;
 }
 
-.page-title {
-  @apply font-semibold text-5xl text-black;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-.page-subtitle {
-  @apply font-normal text-black/60;
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.select-chevron-hide::-ms-expand {
+  display: none;
+}
+
+.select-chevron-hide {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-overflow: '';
 }

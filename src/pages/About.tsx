@@ -14,18 +14,8 @@ function About() {
           title="À propos"
           desc="Dans le cadre de valeurs environnementales et sociales fortes, nous offrons une gamme complète et sur-mesure, des services innovants et un véritable sens du service client. Com In Ariège c’est une solution de distribution à forte valeur ajoutée pour votre structure, portée par une équipe de passionnés de montagne qui s’engage à 100% pour offrir un service de qualité à ses clients."
         />
-        <AboutCard
-          title="Notre histoire"
-          paragraphe={story}
-          image="/src/assets/abouthistoryimage.png"
-        />
-        <AboutCard
-          title="Nos valeurs"
-          paragraphe={values}
-          image="/src/assets/ariege.jpg"
-          leftImage
-          valueCards
-        />
+        <AboutCard title="Notre histoire" paragraphe={story} image="/src/assets/abouthistoryimage.png" />
+        <AboutCard title="Nos valeurs" paragraphe={values} image="/src/assets/ariege.jpg" leftImage valueCards />
       </div>
       <Footer />
     </div>
