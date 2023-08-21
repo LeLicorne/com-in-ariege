@@ -22,7 +22,11 @@ export default function CategoryCard(options: {
       flex-shrink-0
       `}
     >
-      <img src={category.imageUrl} alt="category" className="absolute w-full h-full object-cover" />
+      <img
+        src={category.imageUrl || '/src/assets/category-default.jpeg'}
+        alt="category"
+        className="absolute w-full h-full object-cover"
+      />
       <span
         onClick={() => handleClick(category)}
         role="button"
