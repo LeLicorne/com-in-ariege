@@ -22,11 +22,7 @@ export default function CategoryCard(options: {
       flex-shrink-0
       `}
     >
-      <img
-        src={`src/assets/categories/${category.imageUrl}`}
-        alt="category"
-        className="absolute w-full h-full object-cover"
-      />
+      <img src={category.imageUrl} alt="category" className="absolute w-full h-full object-cover" />
       <span
         onClick={() => handleClick(category)}
         role="button"
@@ -36,7 +32,7 @@ export default function CategoryCard(options: {
         w-full
         h-full
         justify-center
-        items-center
+        items-center text-center
         font-[Poppins]
         text-white
         font-semibold
