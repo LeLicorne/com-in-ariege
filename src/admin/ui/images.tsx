@@ -11,8 +11,11 @@ const Image = ({ url, set }: { url: string; set: React.Dispatch<React.SetStateAc
   );
 };
 
-export default function Images(options: { setSelected: React.Dispatch<React.SetStateAction<string>> }) {
-  const { setSelected } = options;
+export default function Images(options: {
+  selected: string;
+  setSelected: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const { selected, setSelected } = options;
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [images, setImages] = useState<string[] | null>();
@@ -49,12 +52,21 @@ export default function Images(options: { setSelected: React.Dispatch<React.SetS
     <div className="w-full flex flex-row flex-wrap rounded-md border bg-transparent px-3 py-2 mt-2">
       {images.map((image) => {
         return (
-          <div key={image} className="flex w-[100px] h-[100px] m-2">
+          <div
+            key={image}
+            className={`flex w-[100px] h-[100px] m-2 ${
+              image === selected ? 'border-2 border-primary' : ''
+            } transition-all`}
+          >
             <Image url={image} set={setSelected} />
           </div>
         );
       })}
-      <div className={`relative flex w-[100px] h-[100px] m-2 ${!url ? 'border-4 border-dashed border-secondary' : ''}`}>
+      <div
+        className={`relative flex w-[100px] h-[100px] m-2 
+        ${!url ? 'border-4 border-dashed border-secondary' : ''} 
+        ${url === selected ? 'border-2 border-success' : ''} transition-all`}
+      >
         <input
           id="image"
           type="file"
