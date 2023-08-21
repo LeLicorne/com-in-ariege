@@ -36,11 +36,11 @@ function NavBar() {
           <Link to="/" className={loc.pathname === '/' ? 'navBarActiveLink' : 'navBarLink'}>
             ACCUEIL
           </Link>
-          <Link to="/catalogue" className={loc.pathname === '/catalogue' ? 'navBarActiveLink' : 'navBarLink'}>
+          <Link to="/catalogue" className={loc.pathname.includes('/catalogue') ? 'navBarActiveLink' : 'navBarLink'}>
             CATALOGUE
           </Link>
           <Link
-            to="/a-propos"
+            to="/à-propos"
             className={
               loc.pathname === '/a-propos' ? 'navBarActiveLink whitespace-nowrap' : 'navBarLink whitespace-nowrap'
             }
