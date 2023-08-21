@@ -17,10 +17,10 @@ export type Subcategory = {
 
 export type Product = {
   id: string;
-  categoryId: string;
-  category: Category;
-  subcategoryId: string;
-  subcategory: Subcategory;
+  categoryId?: string;
+  category?: Category;
+  subcategoryId?: string;
+  subcategory?: Subcategory;
   name: string;
   description: string;
   reference: string;
