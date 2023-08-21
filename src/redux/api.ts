@@ -57,6 +57,16 @@ export const api = createApi({
         body,
       }),
     }),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getAdminCategories: build.query<any[], void>({
+      query: () => {
+        return {
+          url: 'admin/categories',
+          method: 'GET',
+        };
+      },
+      providesTags: ['Admin'],
+    }),
   }),
 });
 
@@ -64,6 +74,7 @@ export const {
   useGetCategoriesQuery,
   useGetProductByIdQuery,
   useGetProductsQuery,
+  useGetAdminCategoriesQuery,
   useSubNewsletterMutation,
   useAddCategoryMutation,
 } = api;
