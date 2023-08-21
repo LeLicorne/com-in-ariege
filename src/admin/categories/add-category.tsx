@@ -92,7 +92,7 @@ export default function AddCategory() {
                 );
               })}
             </div>
-            <Images selected={image} setSelected={setImage} />
+            <Images selected={image} setSelected={setImage} path="img/categories/" />
           </div>
         </div>
         <div className="mx-16">

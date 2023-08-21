@@ -14,8 +14,9 @@ const Image = ({ url, set }: { url: string; set: React.Dispatch<React.SetStateAc
 export default function Images(options: {
   selected: string;
   setSelected: React.Dispatch<React.SetStateAction<string>>;
+  path: string;
 }) {
-  const { selected, setSelected } = options;
+  const { selected, setSelected, path } = options;
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [images, setImages] = useState<string[] | null>();
@@ -43,8 +44,8 @@ export default function Images(options: {
   const { progress, url } = useUploadImage(file);
 
   useEffect(() => {
-    getAllImages('img/categories').then((res) => setImages(res));
-  }, []);
+    getAllImages(path).then((res) => setImages(res));
+  }, [path]);
 
   if (!images) return null;
 
