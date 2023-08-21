@@ -40,7 +40,7 @@ function NavBar() {
             CATALOGUE
           </Link>
           <Link
-            to="/à-propos"
+            to="/a-propos"
             className={
               loc.pathname === '/a-propos' ? 'navBarActiveLink whitespace-nowrap' : 'navBarLink whitespace-nowrap'
             }

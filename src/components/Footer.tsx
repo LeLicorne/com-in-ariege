@@ -35,7 +35,7 @@ function Footer() {
             <Link to="/catalogue" className="hover:underline">
               Catalogue
             </Link>
-            <Link to="/à-propos" className="hover:underline">
+            <Link to="/a-propos" className="hover:underline">
               À propos
             </Link>
             <Link to="/contact" className="hover:underline">
