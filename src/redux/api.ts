@@ -5,7 +5,7 @@ import { Category, Product } from '../models/shop';
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_SERVER_URL }),
   reducerPath: 'shopApi',
-  tagTypes: ['Category', 'Product', 'Contact'],
+  tagTypes: ['Category', 'Product', 'Contact', 'Admin'],
   endpoints: (build) => ({
     subNewsletter: build.mutation<Response, Partial<NewsletterSub>>({
       query: (body) => ({
@@ -13,7 +13,6 @@ export const api = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Contact'],
     }),
     getCategories: build.query<Category[], void>({
       query: () => {
@@ -51,7 +50,20 @@ export const api = createApi({
       },
       providesTags: ['Product'],
     }),
+    addCategory: build.mutation<void, { name: string; imageUrl: string; subcategories: string[] }>({
+      query: (body) => ({
+        url: 'admin/categories/add',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery, useGetProductByIdQuery, useSubNewsletterMutation, useGetProductsQuery } = api;
+export const {
+  useGetCategoriesQuery,
+  useGetProductByIdQuery,
+  useGetProductsQuery,
+  useSubNewsletterMutation,
+  useAddCategoryMutation,
+} = api;

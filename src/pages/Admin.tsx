@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import { useLocation } from 'react-router-dom';
 import AddCategory from '../admin/categories/add-category';
 import CategoriesPage from '../admin/categories/page';
@@ -12,6 +13,9 @@ export default function Admin() {
 
   return (
     <div>
+      <div>
+        <Toaster />
+      </div>
       <Navbar />
       {loc.pathname === '/admin' && <DashboardPage />}
       {loc.pathname === '/admin/categories' && <CategoriesPage />}

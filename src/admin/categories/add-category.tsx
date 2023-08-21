@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { LuPlus, LuX } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
 import CategoryCard from '../../components/CategoryCard';
+import { useAddCategoryMutation } from '../../redux/api';
 import Button from '../ui/button';
 import Heading from '../ui/heading';
 import Images from '../ui/images';
@@ -10,6 +12,7 @@ import Separator from '../ui/separator';
 
 export default function AddCategory() {
   const nav = useNavigate();
+  const [addCategory, res] = useAddCategoryMutation();
   const [name, setName] = useState('');
   const [subcat, setSubcat] = useState('');
   const [subcats, setSubcats] = useState<string[]>([]);
@@ -23,6 +26,25 @@ export default function AddCategory() {
   function handleRemove(item: string) {
     setSubcats(subcats.filter((i) => i !== item));
   }
+
+  async function handleAddCategory() {
+    if (name.length < 2) {
+      return;
+    }
+    if (!image) return;
+    await addCategory({ name, imageUrl: image, subcategories: subcats });
+  }
+
+  useEffect(() => {
+    if (res.isSuccess) {
+      toast.success('Catégorie créee');
+      nav('categories');
+    }
+    if (res.isError) {
+      toast.error('Catégorie non créee');
+      nav('categories');
+    }
+  }, [res, nav]);
 
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
@@ -90,7 +112,7 @@ export default function AddCategory() {
         </div>
       </div>
       <div className="pt-8">
-        <Button icon={<LuPlus size={16} />} value="Ajouter la catégorie" onClick={() => nav('categories')} />
+        <Button icon={<LuPlus size={16} />} value="Ajouter la catégorie" onClick={() => handleAddCategory()} />
       </div>
     </div>
   );
