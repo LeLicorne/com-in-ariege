@@ -87,7 +87,7 @@ export function DataTable<TData, TValue>({ columns, data, searchKey }: DataTable
           type="button"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-secondary h-9 rounded-md px-3"
+          className="text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:text-grey/30 border bg-transparent hover:bg-secondary h-9 rounded-md px-3"
         >
           Précédent
         </button>
@@ -95,7 +95,7 @@ export function DataTable<TData, TValue>({ columns, data, searchKey }: DataTable
           type="button"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-secondary h-9 rounded-md px-3"
+          className="text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:text-grey/30 border bg-transparent hover:bg-secondary h-9 rounded-md px-3"
         >
           Suivant
         </button>

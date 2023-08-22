@@ -13,9 +13,7 @@ export default function Admin() {
 
   return (
     <div>
-      <div>
-        <Toaster />
-      </div>
+      <Toaster />
       <Navbar />
       {loc.pathname === '/admin' && <DashboardPage />}
       {loc.pathname === '/admin/categories' && <CategoriesPage />}
