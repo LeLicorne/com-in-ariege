@@ -58,6 +58,13 @@ export const api = createApi({
       }),
       invalidatesTags: ['Category'],
     }),
+    addProduct: build.mutation<void, { product: Partial<Product> }>({
+      query: (body) => ({
+        url: 'admin/products/add',
+        method: 'POST',
+        body,
+      }),
+    }),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getAdminCategories: build.query<any[], void>({
       query: () => {
@@ -91,4 +98,5 @@ export const {
   useDeleteCategoryMutation,
   useSubNewsletterMutation,
   useAddCategoryMutation,
+  useAddProductMutation,
 } = api;

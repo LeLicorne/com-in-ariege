@@ -13,9 +13,12 @@ export default function Picker(options: {
         checked={value}
         onChange={() => setValue((c) => !c)}
         className="h-4 w-4 shrink-0 rounded-sm border"
+        id={name}
       />
       <div className="space-y-1 leading-none">
-        <label className="text-sm font-medium leading-none">{name}</label>
+        <label className="text-sm font-medium leading-none" htmlFor={name}>
+          {name}
+        </label>
         <p className="text-sm text-grey">{desc}</p>
       </div>
     </div>
