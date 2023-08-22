@@ -17,6 +17,7 @@ export default function AddCategory() {
   const [subcat, setSubcat] = useState('');
   const [subcats, setSubcats] = useState<string[]>([]);
   const [image, setImage] = useState('');
+  const toastId = 'add-category';
 
   function handleAdd() {
     setSubcats((c) => [...c, subcat]);
@@ -36,12 +37,16 @@ export default function AddCategory() {
   }
 
   useEffect(() => {
+    if (res.isLoading) {
+      toast.loading('Loading...', { id: toastId });
+    }
+
     if (res.isSuccess) {
-      toast.success('Catégorie créee');
+      toast.success('Catégorie créee', { id: toastId });
       nav('categories');
     }
     if (res.isError) {
-      toast.error('Catégorie non créee');
+      toast.error('Catégorie non créee', { id: toastId });
       nav('categories');
     }
   }, [res, nav]);

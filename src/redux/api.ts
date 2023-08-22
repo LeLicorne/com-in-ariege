@@ -56,6 +56,7 @@ export const api = createApi({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Category'],
     }),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getAdminCategories: build.query<any[], void>({
@@ -65,7 +66,19 @@ export const api = createApi({
           method: 'GET',
         };
       },
-      providesTags: ['Admin'],
+      providesTags: ['Category'],
+    }),
+    deleteCategory: build.mutation<void, { categoryId: string }>({
+      query: ({ categoryId }) => {
+        if (!categoryId) {
+          throw new Error('Category ID is required');
+        }
+        return {
+          url: `admin/categories/delete/${categoryId}`,
+          method: 'DELETE',
+        };
+      },
+      invalidatesTags: ['Category'],
     }),
   }),
 });
@@ -75,6 +88,7 @@ export const {
   useGetProductByIdQuery,
   useGetProductsQuery,
   useGetAdminCategoriesQuery,
+  useDeleteCategoryMutation,
   useSubNewsletterMutation,
   useAddCategoryMutation,
 } = api;

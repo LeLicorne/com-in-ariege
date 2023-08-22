@@ -39,7 +39,13 @@ export function DataTable<TData, TValue>({ columns, data, searchKey }: DataTable
           placeholder="Search"
           value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ''}
           onChange={(event) => table.getColumn(searchKey)?.setFilterValue(event.target.value)}
-          className="max-w-sm"
+          className="
+          flex h-10 w-full rounded-md
+          border border-input bg-transparent
+          px-3 py-2 text-sm
+          file:border-0 file:bg-transparent file:text-sm file:font-medium
+          placeholder:text-grey focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+          disabled:cursor-not-allowed disabled:opacity-50 max-w-sm"
         />
       </div>
       <div className="rounded-md border">
@@ -77,10 +83,20 @@ export function DataTable<TData, TValue>({ columns, data, searchKey }: DataTable
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
-        <button type="button" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+        <button
+          type="button"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+          className="inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-secondary h-9 rounded-md px-3"
+        >
           Précédent
         </button>
-        <button type="button" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+        <button
+          type="button"
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+          className="inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-secondary h-9 rounded-md px-3"
+        >
           Suivant
         </button>
       </div>

@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { createColumnHelper } from '@tanstack/react-table';
 import { useGetAdminCategoriesQuery } from '../../redux/api';
+import ActionsButtons from '../ui/action-button';
 import { DataTable } from '../ui/data-table';
 
 type AdminCategory = {
@@ -27,6 +28,10 @@ const columns = [
     header: () => <span>Produits</span>,
     cell: (info) => info.getValue(),
     footer: (info) => info.column.id,
+  }),
+  columnHelper.accessor('id', {
+    header: () => {},
+    cell: (info) => <ActionsButtons type="categories" id={info.getValue()} />,
   }),
 ];
 
