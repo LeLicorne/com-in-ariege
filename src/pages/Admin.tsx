@@ -1,26 +1,24 @@
 import { Toaster } from 'react-hot-toast';
-import { useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import AddCategory from '../admin/categories/add-category';
+import EditCategory from '../admin/categories/edit-category';
 import CategoriesPage from '../admin/categories/page';
 import DashboardPage from '../admin/dashboard/page';
 import Navbar from '../admin/navigation/Navbar';
-import AddProduct from '../admin/products/add-product';
 import ProductsPage from '../admin/products/page';
-import SettingsPage from '../admin/settings/page';
 
 export default function Admin() {
-  const loc = useLocation();
-
   return (
     <div>
       <Toaster />
       <Navbar />
-      {loc.pathname === '/admin' && <DashboardPage />}
-      {loc.pathname === '/admin/categories' && <CategoriesPage />}
-      {loc.pathname === '/admin/categories/new' && <AddCategory />}
-      {loc.pathname === '/admin/produits' && <ProductsPage />}
-      {loc.pathname === '/admin/produits/new' && <AddProduct />}
-      {loc.pathname === '/admin/parametres' && <SettingsPage />}
+      <Routes>
+        <Route index element={<DashboardPage />} />
+        <Route path="categories" element={<CategoriesPage />} />
+        <Route path="categories/new" element={<AddCategory />} />
+        <Route path="categories/:categoryId" element={<EditCategory />} />
+        <Route path="produits" element={<ProductsPage />} />
+      </Routes>
     </div>
   );
 }

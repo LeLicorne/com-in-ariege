@@ -68,13 +68,53 @@ export const api = createApi({
       },
       providesTags: ['Category'],
     }),
+    getCategoryById: build.query<Category, { categoryId: string | undefined }>({
+      query: ({ categoryId }) => {
+        if (!categoryId) {
+          throw new Error('Category ID is required');
+        }
+        return {
+          url: `admin/categories/${categoryId}`,
+        };
+      },
+      providesTags: ['Category'],
+    }),
+    updateCategory: build.mutation<
+      void,
+      { categoryId: string; name: string; imageUrl: string; subcategories: string[] }
+    >({
+      query: ({ categoryId, name, imageUrl, subcategories }) => {
+        if (!categoryId) {
+          throw new Error('Category ID is required');
+        }
+
+        return {
+          url: `admin/categories/${categoryId}`,
+          method: 'PUT',
+          body: { name, imageUrl, subcategories },
+        };
+      },
+      invalidatesTags: ['Category'],
+    }),
+    deleteSubcategory: build.mutation<void, { subcategoryId: string }>({
+      query: ({ subcategoryId }) => {
+        if (!subcategoryId) {
+          throw new Error('Subcategory ID is required');
+        }
+        return {
+          url: `admin/categories/sub/${subcategoryId}`,
+          method: 'DELETE',
+        };
+      },
+      invalidatesTags: ['Category'],
+    }),
     deleteCategory: build.mutation<void, { categoryId: string }>({
       query: ({ categoryId }) => {
         if (!categoryId) {
           throw new Error('Category ID is required');
         }
         return {
-          url: `admin/categories/delete/${categoryId}`,
+          url: `admin/categories/${categoryId}`,
           method: 'DELETE',
         };
       },
@@ -88,6 +128,9 @@ export const {
   useGetProductByIdQuery,
   useGetProductsQuery,
   useGetAdminCategoriesQuery,
+  useGetCategoryByIdQuery,
+  useUpdateCategoryMutation,
+  useDeleteSubcategoryMutation,
   useDeleteCategoryMutation,
   useSubNewsletterMutation,
   useAddCategoryMutation,

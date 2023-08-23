@@ -1,55 +1,99 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { LuPlus, LuX } from 'react-icons/lu';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 import CategoryCard from '../../components/CategoryCard';
-import { useAddCategoryMutation } from '../../redux/api';
+import { useDeleteSubcategoryMutation, useGetCategoryByIdQuery, useUpdateCategoryMutation } from '../../redux/api';
 import Button from '../ui/button';
 import Heading from '../ui/heading';
 import Images from '../ui/images';
 import Input from '../ui/input';
 import Separator from '../ui/separator';
 
-export default function AddCategory() {
+export default function EditCategory() {
+  const { categoryId } = useParams<{ categoryId: string }>();
+  const { data: category, isLoading } = useGetCategoryByIdQuery({ categoryId });
+  const [updateCategory, res] = useUpdateCategoryMutation();
+  const [deleteSubcategory, subRes] = useDeleteSubcategoryMutation();
   const nav = useNavigate();
-  const [addCategory, res] = useAddCategoryMutation();
+
   const [name, setName] = useState('');
   const [subcat, setSubcat] = useState('');
-  const [subcats, setSubcats] = useState<string[]>([]);
+  const [subcats, setSubcats] = useState<{ id: string; name: string }[]>([]);
   const [image, setImage] = useState('');
-  const toastId = 'add-category';
+
+  const toastId = 'update-category';
 
   function handleAdd() {
-    setSubcats((c) => [...c, subcat]);
+    const newSubcat = { id: uuid(), name: subcat };
+    setSubcats((c) => [...c, newSubcat]);
     setSubcat('');
   }
 
-  function handleRemove(item: string) {
-    setSubcats(subcats.filter((i) => i !== item));
+  async function handleUpdateCategory() {
+    if (!category) return;
+    if (!categoryId) return;
+    if (name.length < 2) return;
+    if (!image) return;
+
+    const subcategories: string[] = [];
+    const actualsubcats: string[] = [];
+    category.subcategories?.map((subs) => subcategories.push(subs.name));
+    subcats.map((subs) => actualsubcats.push(subs.name));
+    const newsubcats = actualsubcats.filter((s) => !subcategories.includes(s));
+
+    if (category.name === name && category.imageUrl === image && newsubcats.length === 0) {
+      nav('/admin/categories');
+    }
+
+    await updateCategory({ categoryId, name, imageUrl: image, subcategories: newsubcats });
   }
 
-  async function handleAddCategory() {
-    if (name.length < 2) {
-      return;
-    }
-    if (!image) return;
-    await addCategory({ name, imageUrl: image, subcategories: subcats });
+  async function handleDeleteSubcategory(subcategoryId: string) {
+    if (!subcategoryId) return;
+    await deleteSubcategory({ subcategoryId });
   }
 
   useEffect(() => {
     if (res.isLoading) {
-      toast.loading('Loading...', { id: toastId });
+      toast.loading('Chargement...', { id: toastId });
     }
 
     if (res.isSuccess) {
-      toast.success('Catégorie créee', { id: toastId });
+      toast.success('Catégorie actualisée', { id: toastId });
       nav('/admin/categories');
     }
     if (res.isError) {
-      toast.error('Catégorie non créee', { id: toastId });
+      toast.error(`Erreur lors de l'actualisation`, { id: toastId });
       nav('/admin/categories');
     }
-  }, [res, nav]);
+  }, [res, subRes, nav]);
+
+  useEffect(() => {
+    if (subRes.isLoading) {
+      toast.loading('Chargement...', { id: toastId });
+    }
+
+    if (subRes.isSuccess) {
+      toast.success('Sous-catégorie supprimée', { id: toastId });
+    }
+    if (subRes.isError) {
+      toast.error('Erreur lors de la suppression', { id: toastId });
+    }
+  }, [subRes]);
+
+  useEffect(() => {
+    if (category) {
+      setName(category.name);
+      const subcategories: { id: string; name: string }[] = [];
+      category.subcategories?.map((subs) => subcategories.push({ id: subs.id, name: subs.name }));
+      setSubcats(subcategories);
+      setImage(category.imageUrl);
+    }
+  }, [category]);
+
+  if (isLoading) return <div>Loading ...</div>;
 
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
@@ -86,11 +130,15 @@ export default function AddCategory() {
               {subcats.map((subc) => {
                 return (
                   <div
-                    key={subc}
+                    key={subc.id}
                     className="flex flex-row items-center text-base bg-secondary text-grey w-fit rounded-md pl-3"
                   >
-                    {subc}
-                    <button type="button" onClick={() => handleRemove(subc)} className="text-base py-2 px-3">
+                    {subc.name}
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteSubcategory(subc.id)}
+                      className="text-base py-2 px-3"
+                    >
                       <LuX />
                     </button>
                   </div>
@@ -117,7 +165,7 @@ export default function AddCategory() {
         </div>
       </div>
       <div className="pt-8">
-        <Button icon={<LuPlus size={16} />} value="Ajouter la catégorie" onClick={() => handleAddCategory()} />
+        <Button icon={<LuPlus size={16} />} value="Actualiser la catégorie" onClick={() => handleUpdateCategory()} />
       </div>
     </div>
   );

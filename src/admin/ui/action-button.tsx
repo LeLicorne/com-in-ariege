@@ -37,7 +37,7 @@ export default function ActionsButtons(options: { type: 'categories' | 'products
       <div className="flex flex-row gap-2">
         <button
           type="button"
-          onClick={() => nav(`${type}/${id}`)}
+          onClick={() => nav(`${id}`)}
           className="flex items-center justify-center w-8 h-8 aspect-square text-grey border-[1px] border-secondary rounded-full hover:bg-secondary transition-colors"
         >
           <LuEdit />
