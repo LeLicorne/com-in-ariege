@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export default function Input(options: {
   label: string;
   placeholder: string;
   error?: boolean;
   errorMessage?: string;
-  value: string;
-  setValue(v: string): void;
+  value: string | number;
+  setValue: any;
+  numeric?: boolean;
 }) {
-  const { label, placeholder, error, errorMessage, value, setValue } = options;
+  const { label, placeholder, error, errorMessage, value, numeric, setValue } = options;
   return (
     <div className="flex flex-col gap-1 w-full">
       <label
@@ -31,6 +33,7 @@ export default function Input(options: {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           name={label}
+          type={numeric ? 'number' : 'text'}
         />
       </label>
       {error && <p className="text-sm text-error">{errorMessage}</p>}
