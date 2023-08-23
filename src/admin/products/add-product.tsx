@@ -9,7 +9,7 @@ import Select from '../ui/select';
 import { useAddProductMutation, useGetCategoriesQuery } from '../../redux/api';
 import Picker from '../ui/picker';
 import Button from '../ui/button';
-import { Category, Product } from '../../models/shop';
+import { Category, Product, Image } from '../../models/shop';
 import Images from '../ui/images';
 
 export default function AddProduct() {
@@ -17,13 +17,13 @@ export default function AddProduct() {
   const [addProduct, res] = useAddProductMutation();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState<string>('');
-  const [subcategory, setSubcategory] = useState<string>('');
+  const [categoryId, setCategoryId] = useState<string>('');
+  const [subcategoryId, setSubcategoryId] = useState<string>('');
   const [stock, setStock] = useState<number>(0);
-  const [featured, setFeatured] = useState(false);
-  const [archived, setArchived] = useState(false);
+  const [isFeatured, setIsFeatured] = useState(false);
+  const [isArchived, setIsArchived] = useState(false);
   const [price, setPrice] = useState<number>(0);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState<string>('');
   const [warranty, setWarranty] = useState('');
   const [reference, setReference] = useState('');
   const [ecologic, setEcologic] = useState(false);
@@ -39,28 +39,46 @@ export default function AddProduct() {
   function getSubCat() {
     if (!categories) return [];
     const subCatList: { name: string; value: string }[] = [{ name: 'Aucune', value: '' }];
-    const selectedCat = categories.find((cat) => cat.id === category);
+    const selectedCat = categories.find((cat) => cat.id === categoryId);
     if (!selectedCat) return [];
     selectedCat.subcategories?.map((subCat) => subCatList.push({ name: subCat.name, value: subCat.id }));
     return subCatList;
   }
 
   async function handleAddProduct() {
-    if (name.length < 2 || reference.length < 1 || description.length < 10 || warranty.length < 1 || !image) {
+    if (
+      name.length < 2 ||
+      reference.length < 1 ||
+      description.length < 10 ||
+      warranty.length < 1 ||
+      image.length === 0
+    ) {
       return;
     }
+    const tblImages: Partial<Image>[] = [];
+    tblImages.push({
+      url: 'https://firebasestorage.googleapis.com/v0/b/comin-ariege.appspot.com/o/img%2Fproducts%2Fmaldives.jpg?alt=media&token=5e793a3c-805f-4a1c-9864-626c54ec9459 add-product.tsx:58:12',
+    });
+    tblImages.push({
+      url: 'https://firebasestorage.googleapis.com/v0/b/comin-ariege.appspot.com/o/img%2Fproducts%2Fmaldives.jpg?alt=media&token=5e793a3c-805f-4a1c-9864-626c54ec9459 add-product.tsx:58:12',
+    });
+    tblImages.push({
+      url: 'https://firebasestorage.googleapis.com/v0/b/comin-ariege.appspot.com/o/img%2Fproducts%2Fmaldives.jpg?alt=media&token=5e793a3c-805f-4a1c-9864-626c54ec9459 add-product.tsx:58:12',
+    });
+
     const product: Partial<Product> = {
       reference,
       name,
       description,
-      categoryId: category,
-      subcategoryId: subcategory,
+      categoryId,
+      subcategoryId,
       stock,
-      isFeatured: featured,
-      isArchived: archived,
+      isFeatured,
+      isArchived,
       warranty,
       ecologic,
       price,
+      images: tblImages,
     };
     await addProduct({ product });
   }
@@ -107,8 +125,8 @@ export default function AddProduct() {
         value={description}
         setValue={setDescription}
       />
-      <Select name="Catégorie" opts={getCat(categories || [])} value={category} setValue={setCategory} />
-      <Select name="Sous catégorie" opts={getSubCat()} value={subcategory} setValue={setSubcategory} />
+      <Select name="Catégorie" opts={getCat(categories || [])} value={categoryId} setValue={setCategoryId} />
+      <Select name="Sous catégorie" opts={getSubCat()} value={subcategoryId} setValue={setSubcategoryId} />
       <Input
         label="Stock"
         placeholder="Stock du produit"
@@ -117,8 +135,8 @@ export default function AddProduct() {
         setValue={setStock}
         numeric
       />
-      <Picker name="Produit du moment" desc="" value={featured} setValue={setFeatured} />
-      <Picker name="Produit archivé" desc="" value={archived} setValue={setArchived} />
+      <Picker name="Produit du moment" desc="" value={isFeatured} setValue={setIsFeatured} />
+      <Picker name="Produit archivé" desc="" value={isArchived} setValue={setIsArchived} />
       <Picker name="Produit écologique" desc="" value={ecologic} setValue={setEcologic} />
       <Input
         label="Garantie"

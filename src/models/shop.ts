@@ -32,7 +32,7 @@ export type Product = {
   warranty: string;
   isFeatured: boolean;
   isArchived: boolean;
-  images?: Image[];
+  images?: Image[] | Partial<Image>[];
   createdAt: Date;
   updatedAt: Date;
 };

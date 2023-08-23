@@ -10,7 +10,7 @@ export default function ProductsPage() {
     <div className="flex-1 space-y-4 p-8 pt-6">
       <div className="flex items-center justify-between">
         <Heading title="Produits" description="Gérer les produits de votre boutique" />
-        <Button icon={<LuPlus size={16} />} value="Nouveau produit" onClick={() => nav('produits/new')} />
+        <Button icon={<LuPlus size={16} />} value="Nouveau produit" onClick={() => nav('new')} />
       </div>
       <Separator />
     </div>
