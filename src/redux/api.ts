@@ -127,6 +127,15 @@ export const api = createApi({
       },
       invalidatesTags: ['Category'],
     }),
+    getDashboard: build.query<{ _sum: { stock: number }; _count: { id: number }; isArchived: boolean }[], void>({
+      query: () => {
+        return {
+          url: 'admin/dashboard',
+          method: 'GET',
+        };
+      },
+      providesTags: ['Product'],
+    }),
   }),
 });
 
@@ -136,6 +145,7 @@ export const {
   useGetProductsQuery,
   useGetAdminCategoriesQuery,
   useGetCategoryByIdQuery,
+  useGetDashboardQuery,
   useUpdateCategoryMutation,
   useDeleteSubcategoryMutation,
   useDeleteCategoryMutation,

@@ -6,22 +6,22 @@ export default function Nav() {
   const routes = [
     {
       href: `/admin`,
-      label: 'Overview',
+      label: 'Dashboard',
       active: loc.pathname === `/admin`,
     },
     {
       href: `/admin/categories`,
-      label: 'Categories',
+      label: 'Catégories',
       active: loc.pathname === `/admin/categories`,
     },
     {
       href: `/admin/produits`,
-      label: 'Products',
+      label: 'Produits',
       active: loc.pathname === `/admin/produits`,
     },
     {
       href: `/admin/parametres`,
-      label: 'Settings',
+      label: 'Paramètres',
       active: loc.pathname === `/admin/parametres`,
     },
   ];
