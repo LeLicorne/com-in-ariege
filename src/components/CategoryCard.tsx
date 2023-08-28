@@ -23,7 +23,7 @@ export default function CategoryCard(options: {
       `}
     >
       <img
-        src={`src/assets/categories/${category.imageUrl}`}
+        src={category.imageUrl || '/src/assets/category-default.jpeg'}
         alt="category"
         className="absolute w-full h-full object-cover"
       />

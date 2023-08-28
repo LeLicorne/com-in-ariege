@@ -8,18 +8,18 @@ function OurPartners() {
       </div>
       <div className=" grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 w-full gap-[2vw]">
         <div className=" md:col-span-2 md:row-span-2">
-          <PartnersCard image="src/assets/labellemontagne.jpeg" />
+          <PartnersCard image="src/assets/partners/labellemontagne.jpeg" />
         </div>
-        <PartnersCard image="src/assets/peyragudes.jpeg" />
-        <PartnersCard image="src/assets/nordicsportsnature.jpeg" />
-        <PartnersCard image="src/assets/villarddelans.jpeg" />
-        <PartnersCard image="src/assets/laclusaz.jpeg" />
-        <PartnersCard image="src/assets/skiclubgeneve.jpeg" />
-        <PartnersCard image="src/assets/formigueres.jpeg" />
-        <PartnersCard image="src/assets/fontromeu.jpeg" />
-        <PartnersCard image="src/assets/lafeclaz.jpeg" />
-        <PartnersCard image="src/assets/lesarcs.jpeg" />
-        <PartnersCard image="src/assets/roquefortlespins.jpeg" />
+        <PartnersCard image="src/assets/partners/peyragudes.jpeg" />
+        <PartnersCard image="src/assets/partners/nordicsportsnature.jpeg" />
+        <PartnersCard image="src/assets/partners/villarddelans.jpeg" />
+        <PartnersCard image="src/assets/partners/laclusaz.jpeg" />
+        <PartnersCard image="src/assets/partners/skiclubgeneve.jpeg" />
+        <PartnersCard image="src/assets/partners/formigueres.jpeg" />
+        <PartnersCard image="src/assets/partners/fontromeu.jpeg" />
+        <PartnersCard image="src/assets/partners/lafeclaz.jpeg" />
+        <PartnersCard image="src/assets/partners/lesarcs.jpeg" />
+        <PartnersCard image="src/assets/partners/roquefortlespins.jpeg" />
       </div>
     </div>
   );

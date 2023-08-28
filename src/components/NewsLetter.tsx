@@ -66,7 +66,7 @@ function NewsLetter() {
           }}
           onClick={subToNewsletter}
         >
-          {!res.isLoading ? (
+          {res.isLoading ? (
             <TailSpin ariaLabel="tail-spin-loading" height={24} radius={1} />
           ) : res.isSuccess ? (
             'Inscrit !'
