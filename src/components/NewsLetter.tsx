@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { TailSpin } from 'react-loader-spinner';
 import { useSubNewsletterMutation } from '../redux/api';
 
 function NewsLetter() {
@@ -65,7 +66,15 @@ function NewsLetter() {
           }}
           onClick={subToNewsletter}
         >
-          {res.isSuccess ? 'Inscrit !' : res.isError ? 'Erreur !' : "S'inscrire"}
+          {!res.isLoading ? (
+            <TailSpin ariaLabel="tail-spin-loading" height={24} radius={1} />
+          ) : res.isSuccess ? (
+            'Inscrit !'
+          ) : res.isError ? (
+            'Erreur !'
+          ) : (
+            "S'inscrire"
+          )}
         </button>
       </form>
     </div>
