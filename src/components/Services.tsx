@@ -1,5 +1,4 @@
 import ServiceCard from './ServiceCard';
-import ServiceMomentCard from './ServiceMomentCard';
 
 function Services() {
   return (
@@ -21,9 +20,9 @@ function Services() {
           description="gamme de signaletique essentielle pour informer le public et les utilisateurs des règles de sécurité"
         />
       </div>
-      <div className="w-full h-[50vw]">
+      {/* <div className="w-full h-[50vw]">
         <ServiceMomentCard />
-      </div>
+      </div> */}
     </div>
   );
 }
