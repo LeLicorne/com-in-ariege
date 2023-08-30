@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { LuEdit, LuTrash } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
-import { useDeleteCategoryMutation } from '../../redux/api';
+import { useDeleteCategoryMutation, useDeleteProductMutation } from '../../redux/api';
 import DeleteModal from './modal';
 
 export default function ActionsButtons(options: { type: 'categories' | 'products'; id: string }) {
   const { type, id } = options;
   const nav = useNavigate();
-  const [deleteCategory, res] = useDeleteCategoryMutation();
+  const [deleteCategory, resC] = useDeleteCategoryMutation();
+  const [deleteProduct, resP] = useDeleteProductMutation();
   const toastId = 'action-buttons';
   const [open, setOpen] = useState(false);
 
@@ -17,23 +18,27 @@ export default function ActionsButtons(options: { type: 'categories' | 'products
   };
 
   useEffect(() => {
-    if (res.isLoading) {
+    if (resC.isLoading || resP.isLoading) {
       toast.loading('Loading...', { id: toastId });
     }
 
-    if (res.isSuccess) {
+    if (resC.isSuccess || resP.isSuccess) {
       toast.success(type === 'categories' ? 'Catégorie supprimée' : 'Produit supprimé', { id: toastId });
-      nav(type);
+      nav(type === 'categories' ? '/admin/categories' : '/admin/produits');
     }
-    if (res.isError) {
+    if (resC.isError || resP.isError) {
       toast.error('Erreur lors de la suppression', { id: toastId });
-      nav(type);
+      nav(type === 'categories' ? '/admin/categories' : '/admin/produits');
     }
-  }, [res, type, nav]);
+  }, [resC, resP, type, nav]);
 
   return (
     <>
-      <DeleteModal open={open} toggle={toggleModal} fnc={() => deleteCategory({ categoryId: id })} />
+      <DeleteModal
+        open={open}
+        toggle={toggleModal}
+        fnc={() => (type === 'categories' ? deleteCategory({ categoryId: id }) : deleteProduct({ productId: id }))}
+      />
       <div className="flex flex-row gap-2">
         <button
           type="button"

@@ -58,7 +58,7 @@ export const api = createApi({
       }),
       invalidatesTags: ['Category'],
     }),
-    addProduct: build.mutation<void, { product: Partial<Product> }>({
+    addProduct: build.mutation<void, { product: Partial<Product>; imagesUrl: { url: string }[] }>({
       query: (body) => ({
         url: 'admin/products/add',
         method: 'POST',
@@ -136,6 +136,44 @@ export const api = createApi({
       },
       providesTags: ['Product'],
     }),
+    getAdminProduct: build.query<Product[], void>({
+      query: () => {
+        return {
+          url: 'admin/products',
+          method: 'GET',
+        };
+      },
+      providesTags: ['Product'],
+    }),
+    deleteProduct: build.mutation<void, { productId: string }>({
+      query: ({ productId }) => {
+        if (!productId) {
+          throw new Error('Product ID is required');
+        }
+        return {
+          url: `admin/product/delete/${productId}`,
+          method: 'DELETE',
+        };
+      },
+      invalidatesTags: ['Product'],
+    }),
+    updateProduct: build.mutation<
+      void,
+      { productId: string; partialProduct: Partial<Product>; imagesUrl: { url: string }[] }
+    >({
+      query: ({ productId, partialProduct, imagesUrl }) => {
+        if (!productId) {
+          throw new Error('Category ID is required');
+        }
+
+        return {
+          url: `admin/product/update/${productId}`,
+          method: 'PUT',
+          body: { partialProduct, imagesUrl },
+        };
+      },
+      invalidatesTags: ['Product'],
+    }),
   }),
 });
 
@@ -152,4 +190,7 @@ export const {
   useSubNewsletterMutation,
   useAddCategoryMutation,
   useAddProductMutation,
+  useGetAdminProductQuery,
+  useDeleteProductMutation,
+  useUpdateProductMutation,
 } = api;

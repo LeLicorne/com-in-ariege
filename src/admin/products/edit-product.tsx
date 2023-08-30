@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
 import { LuPlus } from 'react-icons/lu';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Heading from '../ui/heading';
 import Input from '../ui/input';
 import Separator from '../ui/separator';
 import Select from '../ui/select';
-import { useAddProductMutation, useGetCategoriesQuery } from '../../redux/api';
+import { useGetCategoriesQuery, useGetProductByIdQuery, useUpdateProductMutation } from '../../redux/api';
 import Picker from '../ui/picker';
 import Button from '../ui/button';
 import { Category, Product } from '../../models/shop';
 import Images from '../ui/images';
 
-export default function AddProduct() {
+export default function EditProduct() {
+  const { productId } = useParams<{ productId: string }>();
+  const { data: product, isLoading } = useGetProductByIdQuery({ productId });
+  const [updateProduct, res] = useUpdateProductMutation();
   const nav = useNavigate();
-  const [addProduct, res] = useAddProductMutation();
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [categoryId, setCategoryId] = useState<string>('');
@@ -45,8 +48,28 @@ export default function AddProduct() {
     return subCatList;
   }
 
-  async function handleAddProduct() {
+  useEffect(() => {
+    if (product && product.category && product.subcategory && product.images) {
+      setName(product.name);
+      setDescription(product.description);
+      setCategoryId(product.category.id);
+      setSubcategoryId(product.subcategory.id);
+      setStock(product.stock);
+      setIsFeatured(product.isFeatured);
+      setIsArchived(product.isArchived);
+      setPrice(product.price);
+      setWarranty(product.warranty);
+      setReference(product.reference);
+      setEcologic(product.ecologic);
+      const imagesUrl: string[] = [];
+      product.images.map((img) => (img.url ? imagesUrl.push(img.url) : null));
+      setImage(imagesUrl[0]);
+    }
+  }, [product]);
+
+  async function handleEditProduct() {
     if (
+      !productId ||
       name.length < 2 ||
       reference.length < 1 ||
       description.length < 10 ||
@@ -66,7 +89,7 @@ export default function AddProduct() {
       url: 'https://firebasestorage.googleapis.com/v0/b/comin-ariege.appspot.com/o/img%2Fproducts%2Fmaldives.jpg?alt=media&token=5e793a3c-805f-4a1c-9864-626c54ec9459 add-product.tsx:58:12',
     });
 
-    const product: Partial<Product> = {
+    const partialProduct: Partial<Product> = {
       reference,
       name,
       description,
@@ -79,7 +102,7 @@ export default function AddProduct() {
       ecologic,
       price,
     };
-    await addProduct({ product, imagesUrl });
+    await updateProduct({ productId, partialProduct, imagesUrl });
   }
 
   useEffect(() => {
@@ -88,14 +111,16 @@ export default function AddProduct() {
     }
 
     if (res.isSuccess) {
-      toast.success('Produit crée', { id: toastId });
+      toast.success('Produit modifié', { id: toastId });
       nav('/admin/produits');
     }
     if (res.isError) {
-      toast.error('Produit non crée', { id: toastId });
+      toast.error('Produit non modifié', { id: toastId });
       nav('/admin/produits');
     }
   }, [res, nav]);
+
+  if (isLoading) return <div>Loading ...</div>;
 
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
@@ -154,7 +179,7 @@ export default function AddProduct() {
       />
       <Images selected={image} setSelected={setImage} path="img/products/" />
       <div className="pt-8">
-        <Button icon={<LuPlus size={16} />} value="Ajouter le produit" onClick={() => handleAddProduct()} />
+        <Button icon={<LuPlus size={16} />} value="Actualiser le produit" onClick={() => handleEditProduct()} />
       </div>
     </div>
   );

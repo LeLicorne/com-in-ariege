@@ -98,7 +98,7 @@ export default function EditCategory() {
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
       <div className="flex items-center justify-between">
-        <Heading title="Créer une catégorie" description="Ajoute une nouvelle catégorie" />
+        <Heading title="Modifier la catégorie" description="Modifier une catégorie" />
       </div>
       <Separator />
       <div className="flex flex-row gap-8">

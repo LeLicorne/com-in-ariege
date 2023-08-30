@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../ui/button';
 import Heading from '../ui/heading';
 import Separator from '../ui/separator';
+import Table from './table';
 
 export default function ProductsPage() {
   const nav = useNavigate();
@@ -13,6 +14,7 @@ export default function ProductsPage() {
         <Button icon={<LuPlus size={16} />} value="Nouveau produit" onClick={() => nav('new')} />
       </div>
       <Separator />
+      <Table />
     </div>
   );
 }

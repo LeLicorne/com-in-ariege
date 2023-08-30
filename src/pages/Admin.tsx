@@ -7,6 +7,7 @@ import DashboardPage from '../admin/dashboard/page';
 import Navbar from '../admin/navigation/Navbar';
 import ProductsPage from '../admin/products/page';
 import AddProduct from '../admin/products/add-product';
+import EditProduct from '../admin/products/edit-product';
 
 export default function Admin() {
   return (
@@ -20,6 +21,7 @@ export default function Admin() {
         <Route path="categories/:categoryId" element={<EditCategory />} />
         <Route path="produits" element={<ProductsPage />} />
         <Route path="produits/new" element={<AddProduct />} />
+        <Route path="produits/:productId" element={<EditProduct />} />
       </Routes>
     </div>
   );
