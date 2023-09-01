@@ -7,7 +7,7 @@ export function hello() {
  * @param {number} price - Price
  * @returns {string} - Price in the correct format
  */
-export function getPrice(price: number) {
+export function getPrice(price: number): string {
   const float = price * 1.0;
   const [int, dec] = float.toString().split('.');
   return `${int},${!dec ? '00' : dec.slice(0, 2)}`;
