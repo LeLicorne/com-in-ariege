@@ -37,13 +37,19 @@ export const api = createApi({
     }),
     getProducts: build.query<
       { products: Product[]; count: number },
-      { categoryId?: string; subcategoryId?: string; page: string }
+      { text?: string; categoryId?: string; subcategoryId?: string; page: string }
     >({
-      query: ({ categoryId, subcategoryId, page }) => {
+      query: ({ text, categoryId, subcategoryId, page }) => {
         if (!page) {
           throw new Error('Page is required');
         }
 
+        if (text) {
+          return {
+            url: `shop/products/search/${text}/${page}`,
+            method: 'GET',
+          };
+        }
         return {
           url: `shop/products/${categoryId}/${subcategoryId}/${page}`,
           method: 'GET',
