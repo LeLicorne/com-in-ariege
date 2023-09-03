@@ -6,29 +6,38 @@ function NewsLetter() {
   const [subNewsletter, res] = useSubNewsletterMutation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('Aucune');
   const [success, setSuccess] = useState(false);
 
   const mail: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
   function subToNewsletter(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
-    setError('');
     if (name.length <= 1) {
-      setError('Votre nom faire minimum 2 caractères');
+      setErrorMsg('Votre nom faire minimum 2 caractères');
+      setError(true);
       return;
     }
     if (!mail.test(email)) {
-      setError('Vérifiez votre mail');
+      setErrorMsg('Vérifiez votre mail');
+      setError(true);
       return;
     }
     subNewsletter({ name, email });
   }
 
   useEffect(() => {
-    if (res.isError) setError('Erreur inattendue, réessayer plus tard');
+    if (res.isError) {
+      setErrorMsg('Erreur inattendue, réessayer plus tard');
+      setError(true);
+    }
     if (res.isSuccess) setSuccess(true);
   }, [res]);
+
+  useEffect(() => {
+    setError(false);
+  }, [name, email]);
 
   return (
     <div className="relative flex flex-col w-full items-center">
@@ -75,7 +84,9 @@ function NewsLetter() {
           />
           <button
             type="submit"
-            className={`w-80 justify-center ${success ? 'button-success' : error ? 'button-error' : 'button-primary'}`}
+            className={`w-80 justify-center transition-colors ${
+              success ? 'button-success' : error ? 'button-error' : 'button-primary'
+            }`}
           >
             {res.isLoading ? (
               <TailSpin ariaLabel="tail-spin-loading" height={28} radius={1} />
@@ -88,7 +99,7 @@ function NewsLetter() {
             )}
           </button>
         </form>
-        <p className="text-sm text-error pt-4">{error}</p>
+        <p className={`text-sm text-error pt-4 transition-opacity ${!error ? 'opacity-0' : ''}`}>{errorMsg}</p>
       </div>
     </div>
   );

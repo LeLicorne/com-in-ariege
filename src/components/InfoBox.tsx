@@ -95,9 +95,10 @@ const CallButton = () => {
   function handleClick(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!phone) return;
-    setError(false);
-    if (!phoneExp.test(phone)) setError(true);
-    if (error) return;
+    if (!phoneExp.test(phone)) {
+      setError(true);
+      return;
+    }
     addPhone({
       phone,
       reason: `Appel prise d'information`,
@@ -130,7 +131,7 @@ const CallButton = () => {
         />
         <button
           type="submit"
-          className={`hidden sm:block text-black font-semibold bg-primary px-4 py-2 m-2 whitespace-nowrap w-40 ${
+          className={`hidden sm:block text-black font-semibold px-4 py-2 m-2 whitespace-nowrap transition-colors w-40 ${
             success ? 'bg-success' : error ? 'bg-error' : 'bg-primary'
           }`}
         >
@@ -148,7 +149,7 @@ const CallButton = () => {
         </button>
         <button
           type="submit"
-          className={`sm:hidden text-black font-semibold bg-primary px-4 py-2 m-2 whitespace-nowrap ${
+          className={`sm:hidden text-black font-semibold px-4 py-2 m-2 whitespace-nowrap transition-colors ${
             success ? 'bg-success' : error ? 'bg-error' : 'bg-primary'
           }`}
         >
@@ -163,7 +164,7 @@ const CallButton = () => {
           )}
         </button>
       </form>
-      <p className={`absolute bottom-[-20px] text-error text-xs ${error ? '' : 'opacity-0'}`}>
+      <p className={`absolute bottom-[-20px] text-error transition-opacity text-xs ${error ? '' : 'opacity-0'}`}>
         Veuillez vérifiez votre téléphone.
       </p>
     </div>
