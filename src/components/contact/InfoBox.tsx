@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { FaCheck, FaEnvelope } from 'react-icons/fa';
 import { TailSpin } from 'react-loader-spinner';
-import { usePhoneCallMutation } from '../redux/api';
+import { usePhoneCallMutation } from '../../redux/api';
 
 const FaLocationDot = () => {
   return (

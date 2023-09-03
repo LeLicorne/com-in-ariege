@@ -1,7 +1,4 @@
-export function hello() {
-  return 'hello';
-}
-
+/* eslint-disable import/prefer-default-export */
 /**
  * The database give us the price as a number, we need to convert replace the dot by a comma
  * @param {number} price - Price

@@ -1,4 +1,4 @@
-import { Subcategory } from '../models/shop';
+import { Subcategory } from '../../models/shop';
 import Filter from './Filter';
 
 export default function Filters(options: {

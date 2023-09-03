@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FaCheck, FaPaperPlane } from 'react-icons/fa';
 import { TailSpin } from 'react-loader-spinner';
-import { useSendMessageMutation } from '../redux/api';
+import { useSendMessageMutation } from '../../redux/api';
 
 const FaX = () => {
   return (

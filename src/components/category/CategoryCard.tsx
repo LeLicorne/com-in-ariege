@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Category } from '../models/shop';
+import { Category } from '../../models/shop';
 
 export default function CategoryCard(options: {
   category: Category;

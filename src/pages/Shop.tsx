@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Categories from '../components/Categories';
-import Filters from '../components/Filters';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import Pagination from '../components/Pagination';
-import Products from '../components/Products';
 import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
+import Categories from '../components/category/Categories';
+import Filters from '../components/filter/Filters';
+import Products from '../components/product/Products';
 import { Category, Subcategory } from '../models/shop';
 import { useGetProductsQuery } from '../redux/api';
 import ScrollToAnchor from '../utils/scrollToAnchor';

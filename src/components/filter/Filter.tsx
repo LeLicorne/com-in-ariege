@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import { Subcategory } from '../models/shop';
+import { Subcategory } from '../../models/shop';
 
 export default function Filter(vars: {
   name: string;

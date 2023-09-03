@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
-import { Category, Subcategory } from '../models/shop';
-import { useGetCategoriesQuery } from '../redux/api';
+import { Category, Subcategory } from '../../models/shop';
+import { useGetCategoriesQuery } from '../../redux/api';
 import CategoryCard from './CategoryCard';
 
 export default function Categories(options: {

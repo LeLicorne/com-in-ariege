@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import NewsLetter from '../components/Newsletter';
 import OurPartners from '../components/OurPartners';
 import OurTeam from '../components/OurTeam';
-import Service from '../components/Services';
+import Service from '../components/service/Services';
 
 export default function Home() {
   return (
