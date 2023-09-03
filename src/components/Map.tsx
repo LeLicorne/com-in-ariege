@@ -2,8 +2,10 @@
 import GoogleMap from 'google-maps-react-markers';
 
 const FaLocationDot = (options: { lat: number; lng: number }) => {
+  const { lat, lng } = options;
   return (
     <svg
+      id={`${lat + lng}`}
       stroke="currentColor"
       fill="currentColor"
       strokeWidth="0"

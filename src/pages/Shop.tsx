@@ -16,7 +16,6 @@ function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCat, setSelectedCat] = useState<Category | undefined>(undefined);
   const [selectedSubCat, setSelectedSubCat] = useState<Subcategory | undefined>(undefined);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [availability, setAvailability] = useState<'unsort' | 'available' | 'unavailable'>('unsort');
 
   const page = searchParams.get('page') || '1';
@@ -59,7 +58,7 @@ function Shop() {
       </div>
       <Categories selectedCat={selectedCat} setSelectedCat={setSelectedCat} setSelectedSubCat={setSelectedSubCat} />
       <div id="produits" className="flex flex-col gap-8 px-[7%] pt-8">
-        <h2 className="text-black text-4xl font-semibold">
+        <h2 className="text-black text-4xl font-semibold" id={availability}>
           {search ? `Résultats pour : ${search}` : selectedCat ? selectedCat.name : 'Tous'}
         </h2>
         <Filters
