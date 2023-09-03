@@ -19,7 +19,7 @@ function App() {
       <Route path="/catalogue" element={<Shop />} />
       <Route path="/catalogue/produit/:productId" element={<Product />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/à-propos" element={<About />} />
+      <Route path="/a-propos" element={<About />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

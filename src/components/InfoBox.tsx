@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { FaEnvelope } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { FaCheck, FaEnvelope } from 'react-icons/fa';
+import { TailSpin } from 'react-loader-spinner';
+import { usePhoneCallMutation } from '../redux/api';
 
 const FaLocationDot = () => {
   return (
@@ -50,6 +53,22 @@ const FaPhone = () => {
   );
 };
 
+const FaX = () => {
+  return (
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      strokeWidth="0"
+      viewBox="0 0 384 512"
+      height="1em"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+    </svg>
+  );
+};
+
 function InfoLine(options: { title: string; icon: any; content: string | JSX.Element }) {
   const { title, icon, content } = options;
   return (
@@ -67,24 +86,86 @@ function InfoLine(options: { title: string; icon: any; content: string | JSX.Ele
 }
 
 const CallButton = () => {
+  const [phone, setPhone] = useState('');
+  const [addPhone, res] = usePhoneCallMutation();
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const phoneExp: RegExp = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/gim;
+
+  function handleClick(event: React.SyntheticEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!phone) return;
+    setError(false);
+    if (!phoneExp.test(phone)) setError(true);
+    if (error) return;
+    addPhone({
+      phone,
+      reason: `Appel prise d'information`,
+    });
+  }
+
+  useEffect(() => {
+    setError(false);
+  }, [phone]);
+
+  useEffect(() => {
+    if (res.isError) setError(true);
+    if (res.isSuccess) {
+      setSuccess(true);
+      setPhone('');
+    }
+  }, [res]);
+
   return (
-    <div className="flex flex-row bg-zinc-100 items-center">
-      <input
-        type="text"
-        name="phone"
-        id=""
-        placeholder="+33(0) 6 66 77 88 99"
-        className="flex sm:min-w-max w-full bg-transparent px-4 text-normal focus:outline-none"
-      />
-      <button
-        type="submit"
-        className="hidden sm:block text-black font-semibold bg-primary px-4 py-2 m-2 whitespace-nowrap"
-      >
-        Appelez-moi !
-      </button>
-      <button type="submit" className="sm:hidden text-black font-semibold bg-primary px-4 py-2 m-2 whitespace-nowrap">
-        <FaPhoneVolume />
-      </button>
+    <div className="relative">
+      <form className="flex flex-row bg-zinc-100 items-center w-full lg:w-fit" onSubmit={handleClick}>
+        <input
+          type="text"
+          name="phone"
+          placeholder="+33(0) 6 66 77 88 99"
+          className="flex max-lg:w-full sm:min-w-fit bg-transparent px-4 text-normal focus:outline-none"
+          value={phone}
+          required
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <button
+          type="submit"
+          className={`hidden sm:block text-black font-semibold bg-primary px-4 py-2 m-2 whitespace-nowrap w-40 ${
+            success ? 'bg-success' : error ? 'bg-error' : 'bg-primary'
+          }`}
+        >
+          {res.isLoading ? (
+            <div className="flex justify-center">
+              <TailSpin ariaLabel="tail-spin-loading" height={24} width={24} radius={1} />
+            </div>
+          ) : success ? (
+            <p>Programmé</p>
+          ) : error ? (
+            <p>Erreur !</p>
+          ) : (
+            <p>Appelez-moi !</p>
+          )}
+        </button>
+        <button
+          type="submit"
+          className={`sm:hidden text-black font-semibold bg-primary px-4 py-2 m-2 whitespace-nowrap ${
+            success ? 'bg-success' : error ? 'bg-error' : 'bg-primary'
+          }`}
+        >
+          {res.isLoading ? (
+            <TailSpin ariaLabel="tail-spin-loading" height={16} width={16} radius={1} />
+          ) : success ? (
+            <FaCheck />
+          ) : error ? (
+            <FaX />
+          ) : (
+            <FaPhoneVolume />
+          )}
+        </button>
+      </form>
+      <p className={`absolute bottom-[-20px] text-error text-xs ${error ? '' : 'opacity-0'}`}>
+        Veuillez vérifiez votre téléphone.
+      </p>
     </div>
   );
 };

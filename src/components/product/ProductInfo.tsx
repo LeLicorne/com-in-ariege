@@ -84,8 +84,6 @@ export default function ProductInfo(options: { product: Product }) {
         <p className="opacity-70 text-xl font-medium">{product.description}</p>
         <div className="flex flex-col gap-2 mt-6 mb-20">
           <Spec name="Référence" value={product.reference} />
-          <Spec name="Référence" value="À faire" />
-          <Spec name="Référence" value="À faire" />
         </div>
       </div>
       <div className="flex flex-col gap-4">

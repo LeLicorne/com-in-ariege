@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { NewsletterSub } from '../models/contact';
+import { ContactMessage, NewsletterSub, Phone } from '../models/contact';
 import { Category, Product } from '../models/shop';
 
 export const api = createApi({
@@ -10,6 +10,22 @@ export const api = createApi({
     subNewsletter: build.mutation<Response, Partial<NewsletterSub>>({
       query: (body) => ({
         url: `contact/newsletter/register`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Contact'],
+    }),
+    sendMessage: build.mutation<void, Partial<ContactMessage>>({
+      query: (body) => ({
+        url: `contact/message/send`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Contact'],
+    }),
+    phoneCall: build.mutation<void, Partial<Phone>>({
+      query: (body) => ({
+        url: `contact/phone/add`,
         method: 'POST',
         body,
       }),
@@ -37,13 +53,19 @@ export const api = createApi({
     }),
     getProducts: build.query<
       { products: Product[]; count: number },
-      { categoryId?: string; subcategoryId?: string; page: string }
+      { text?: string; categoryId?: string; subcategoryId?: string; page: string }
     >({
-      query: ({ categoryId, subcategoryId, page }) => {
+      query: ({ text, categoryId, subcategoryId, page }) => {
         if (!page) {
           throw new Error('Page is required');
         }
 
+        if (text) {
+          return {
+            url: `shop/products/search/${text}/${page}`,
+            method: 'GET',
+          };
+        }
         return {
           url: `shop/products/${categoryId}/${subcategoryId}/${page}`,
           method: 'GET',
@@ -54,4 +76,11 @@ export const api = createApi({
   }),
 });
 
-export const { useGetCategoriesQuery, useGetProductByIdQuery, useSubNewsletterMutation, useGetProductsQuery } = api;
+export const {
+  useGetCategoriesQuery,
+  useGetProductByIdQuery,
+  useGetProductsQuery,
+  useSubNewsletterMutation,
+  useSendMessageMutation,
+  usePhoneCallMutation,
+} = api;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Categories from '../components/Categories';
 import Filters from '../components/Filters';
@@ -10,16 +10,20 @@ import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
 import { Category, Subcategory } from '../models/shop';
 import { useGetProductsQuery } from '../redux/api';
+import ScrollToAnchor from '../utils/scrollToAnchor';
 
 function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCat, setSelectedCat] = useState<Category | undefined>(undefined);
   const [selectedSubCat, setSelectedSubCat] = useState<Subcategory | undefined>(undefined);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [availability, setAvailability] = useState<'unsort' | 'available' | 'unavailable'>('unsort');
 
   const page = searchParams.get('page') || '1';
+  const [search, setSearch] = useState(searchParams.get('search') || undefined);
 
   const { data, isLoading } = useGetProductsQuery({
+    text: search,
     categoryId: selectedCat?.id,
     subcategoryId: selectedSubCat?.id,
     page,
@@ -38,10 +42,13 @@ function Shop() {
     document.getElementById('productContainer')?.scrollIntoView();
   };
 
-  console.log(availability);
+  useEffect(() => {
+    if (selectedCat) setSearch(undefined);
+  }, [selectedCat]);
 
   return (
     <div className="flex flex-col w-full h-auto">
+      <ScrollToAnchor />
       <NavBar />
       <div className="flex flex-col gap-20 lg:gap-32 px-[7%]">
         <Title
@@ -51,8 +58,10 @@ function Shop() {
         <SearchBar />
       </div>
       <Categories selectedCat={selectedCat} setSelectedCat={setSelectedCat} setSelectedSubCat={setSelectedSubCat} />
-      <div id="productContainer" className="flex flex-col gap-8 px-[7%] mt-8">
-        <h2 className="text-black text-4xl font-semibold">{selectedCat ? selectedCat.name : 'Tous'}</h2>
+      <div id="produits" className="flex flex-col gap-8 px-[7%] pt-8">
+        <h2 className="text-black text-4xl font-semibold">
+          {search ? `Résultats pour : ${search}` : selectedCat ? selectedCat.name : 'Tous'}
+        </h2>
         <Filters
           subCat={selectedSubCat}
           subCats={selectedCat?.subcategories}

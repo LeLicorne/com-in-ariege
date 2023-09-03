@@ -14,7 +14,7 @@ export default function Contact() {
           title="Contactez-nous"
           desc={"C'est avec plaisir que nous répondrons à votre demande dans les plus brefs délais."}
         />
-        <div className="flex flex-col lg:flex-row w-full gap-24">
+        <div className="flex flex-col lg:flex-row gap-24 lg:gap-12 xl:gap-24 w-full">
           <ContactForm />
           <InfoBox />
         </div>

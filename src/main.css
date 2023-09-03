@@ -108,7 +108,7 @@
 }
 
 .footerCategory {
-  @apply flex md:flex-col justify-between md:justify-normal gap-2;
+  @apply flex flex-row md:flex-col max-[330px]:flex-col justify-between md:justify-normal gap-2;
 }
 
 .footerTitle {
@@ -116,7 +116,7 @@
 }
 
 .footerArguments {
-  @apply flex flex-col text-right md:text-left gap-0 md:gap-2 opacity-60;
+  @apply flex flex-col text-right max-[330px]:text-left md:text-left gap-0 md:gap-2 opacity-60;
 }
 
 .content-title {

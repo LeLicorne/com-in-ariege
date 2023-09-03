@@ -22,7 +22,7 @@ export default function Product() {
           desc="Dans le cadre de valeurs environnementales et sociales fortes, nous offrons une gamme complète et sur-mesure, des services innovants et un véritable sens du service client. Com In Ariège c’est une solution de distribution à forte valeur ajoutée pour votre structure, portée par une équipe de passionnés de montagne qui s’engage à 100% pour offrir un service de qualité à ses clients."
         />
         <div className="flex flex-col md:flex-row gap-12 w-full">
-          <ProductImages images={product?.images} />
+          <ProductImages img={product?.images} />
           <ProductInfo product={product} />
         </div>
         <div className="flex flex-col gap-10">
