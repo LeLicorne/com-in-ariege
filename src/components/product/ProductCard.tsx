@@ -9,7 +9,7 @@ function ProductCard(options: { product: Product }) {
       <div className="bg-secondary p-2 w-full aspect-square">
         <img
           className="w-full h-full object-cover"
-          src={product.images?.length ? product.images[0].url : '/src/assets/placeholder.jpg'}
+          src={product.images?.length ? product.images[0].url : '/assets/placeholder.jpg'}
           alt={product.name}
         />
       </div>

@@ -18,13 +18,13 @@ export default function ProductImages(options: { img: Image[] | undefined }) {
     return (
       <div className="w-full flex flex-col gap-3 lg:gap-5">
         <div className="w-full aspect-square object-cover p-2 bg-secondary">
-          <img src="/src/assets/placeholder.jpg" alt="" />
+          <img src="/assets/placeholder.jpg" alt="" />
         </div>
         <div className="grid grid-cols-4 gap-3 lg:gap-5 w-full overflow-hidden">
-          <img src="/src/assets/placeholder.jpg" alt="" className="bg-secondary w-full p-2" />
-          <img src="/src/assets/placeholder.jpg" alt="" className="bg-secondary w-full p-2" />
-          <img src="/src/assets/placeholder.jpg" alt="" className="bg-secondary w-full p-2" />
-          <img src="/src/assets/placeholder.jpg" alt="" className="bg-secondary w-full p-2" />
+          <img src="/assets/placeholder.jpg" alt="" className="bg-secondary w-full p-2" />
+          <img src="/assets/placeholder.jpg" alt="" className="bg-secondary w-full p-2" />
+          <img src="/assets/placeholder.jpg" alt="" className="bg-secondary w-full p-2" />
+          <img src="/assets/placeholder.jpg" alt="" className="bg-secondary w-full p-2" />
         </div>
       </div>
     );

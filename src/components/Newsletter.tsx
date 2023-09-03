@@ -42,11 +42,7 @@ function NewsLetter() {
   return (
     <div className="relative flex flex-col w-full items-center">
       <div className="w-full h-[30vh] sm:h-[50vh] flex flex-col relative items-center justify-center text-white overflow-hidden">
-        <img
-          src="src/assets/sunsetmountain.jpg"
-          alt=""
-          className="absolute object-cover brightness-75 z-0 xl:pt-[25%]"
-        />
+        <img src="assets/sunsetmountain.jpg" alt="" className="absolute object-cover brightness-75 z-0 xl:pt-[25%]" />
         <div className="flex flex-col justify-center items-center z-10 text-[6vw] sm:text-[5vw] leading-none lg:text-6xl font-semibold">
           <h2>Inscrivez vous à notre</h2>
           <h2>newsletter</h2>

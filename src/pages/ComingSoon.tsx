@@ -1,6 +1,6 @@
 function ComingSoon() {
   return (
-    <main className="h-screen w-full flex flex-col bg-[url('/src/assets/mountains.png')] bg-center bg-cover">
+    <main className="h-screen w-full flex flex-col bg-[url('/assets/mountains.png')] bg-center bg-cover">
       <div id="brandname" className="h-20 font-[Poppins] font-bold flex items-center">
         <h2 className="text-3xl ml-10">COM IN ARIÈGE</h2>
       </div>

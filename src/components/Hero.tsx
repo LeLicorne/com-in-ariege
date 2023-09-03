@@ -5,7 +5,7 @@ function Hero() {
     <>
       <div
         id="mountainBackground"
-        className="absolute h-screen w-full top-16 left-0 bg-[url('src/assets/mountains.png')] bg-cover bg-center opacity-50"
+        className="absolute h-screen w-full top-16 left-0 bg-[url('assets/mountains.png')] bg-cover bg-center opacity-50"
       />
       <div className="h-screen w-full flex flex-col items-center justify-center z-10 gap-10">
         <div className="flex flex-col">
