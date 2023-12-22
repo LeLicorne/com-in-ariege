@@ -52,7 +52,7 @@ function Shop() {
       <div className="flex flex-col gap-20 lg:gap-32 px-[7%]">
         <Title
           title="Catalogue"
-          desc="Dans le cadre de valeurs environnementales et sociales fortes, nous offrons une gamme complète et sur-mesure, des services innovants et un véritable sens du service client. Com In Ariège c’est une solution de distribution à forte valeur ajoutée pour votre structure, portée par une équipe de passionnés de montagne qui s’engage à 100% pour offrir un service de qualité à ses clients."
+          desc="Dans le contexte de notre engagement en faveur de valeurs environnementales et sociales solides, nous proposons une gamme complète et personnalisée de services novateurs, tout en mettant un accent particulier sur la satisfaction de nos clients. Com In Ariège représente une solution de distribution hautement valorisante pour votre organisation, dirigée par une équipe de passionnés de la montagne qui s'investissent pleinement pour garantir un service de qualité à nos clients."
         />
         <SearchBar />
       </div>

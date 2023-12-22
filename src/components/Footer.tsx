@@ -46,7 +46,7 @@ function Footer() {
         <div className="footerCategory">
           <h3 className="footerTitle">Contact</h3>
           <div className="footerArguments">
-            <p>+33(0) 6 56 78 90 23</p>
+            <p>+33(0) 6 51 53 86 51</p>
             <a href="mailto:contact@cominarige.com">contact@cominarige.com</a>
             <p className=" flex flex-col leading-4 mt-2">
               <span>8 AVENUE DE DALOU</span>

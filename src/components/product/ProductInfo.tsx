@@ -65,8 +65,8 @@ const Price = ({ price, stock }: { price: number; stock: number }) => {
   return (
     <div className="flex flex-col gap-4">
       <p className="flex flex-row text-xl gap-1">
-        <span className="text-4xl font-semibold">{getPrice(price)}€</span>
-        <span className="flex items-start opacity-60">HT</span>
+        <span className="text-4xl font-semibold">{false ? `${getPrice(price)}€` : 'Prix sur devis'}</span>
+        <span className="flex items-start opacity-60">{false ? 'HT' : ''}</span>
         <span className="flex items-end opacity-60 ml-1">({stock} en stock)</span>
       </p>
       {stock === 0 && <Unavailable />}

@@ -20,7 +20,7 @@ function ProductCard(options: { product: Product }) {
             {product.description}
           </p>
         </div>
-        <p className="flex w-fit text-xl sm:text-2xl font-semibold">{getPrice(product.price)}€</p>
+        {false && <p className="flex w-fit text-xl sm:text-2xl font-semibold">{getPrice(product.price)}€</p>}
       </div>
     </Link>
   );
