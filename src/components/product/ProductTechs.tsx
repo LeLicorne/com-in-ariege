@@ -21,7 +21,7 @@ export default function ProductTechs(options: { product: Product }) {
           <Tech name="Catégorie" value={!product.category ? 'Aucune' : product.category.name} />
           <Tech name="Produit" value={product.name} />
           <Tech name="Référence" value={product.reference} />
-          <Tech name="Prix" value={`${getPrice(product.price)} HT`} />
+          <Tech name="Prix" value={false ? `${getPrice(product.price)} HT` : 'Sur devis'} />
           <Tech name="Démarche écologique" value={product.ecologic ? 'Oui' : 'Non'} />
           <Tech name="Garantie" value={product.warranty || 'Non'} />
         </div>

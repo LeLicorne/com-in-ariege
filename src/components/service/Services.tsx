@@ -17,7 +17,7 @@ function Services() {
         <ServiceCard
           image="/assets/categories/signaletique.jpeg"
           title="Signalétique"
-          description="gamme de signaletique essentielle pour informer le public et les utilisateurs des règles de sécurité"
+          description="gamme de signalétique essentielle pour informer le public et les utilisateurs des règles de sécurité"
         />
       </div>
       {/* <div className="w-full h-[50vw]">

@@ -12,7 +12,7 @@ function About() {
       <div className="flex flex-col gap-20 lg:gap-32 px-[7%]">
         <Title
           title="À propos"
-          desc="Dans le cadre de valeurs environnementales et sociales fortes, nous offrons une gamme complète et sur-mesure, des services innovants et un véritable sens du service client. Com In Ariège c’est une solution de distribution à forte valeur ajoutée pour votre structure, portée par une équipe de passionnés de montagne qui s’engage à 100% pour offrir un service de qualité à ses clients."
+          desc="Chez Com In Ariège, notre passion pour la montagne est au cœur de tout ce que nous faisons. Fondée sur des valeurs environnementales et sociales solides, notre entreprise s'engage à offrir une expérience unique à nos clients."
         />
         <AboutCard title="Notre histoire" paragraphe={story} image="/assets/abouthistoryimage.png" />
         <AboutCard title="Nos valeurs" paragraphe={values} image="/assets/ariege.jpg" leftImage valueCards />

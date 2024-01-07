@@ -10,8 +10,8 @@ function OurTeam() {
         <TeamMemberCard
           image="assets/menface.png"
           name="Alexis LO RE"
-          position="Responsable communication"
-          description="Bonjour à tous ! Je suis Alexis, responsable communication de l'entreprise. Passionné de sports d'hiver et de montagne, je mets en lumière notre expertise technique et nos équipements de pointe. Mon objectif est de vous inspirer pour des aventures inoubliables sur les pistes."
+          position="Responsable commercial"
+          description="Bonjour à tous ! Je suis Alexis, responsable commercial de l'entreprise. Grand amoureux de nature, de montagne, ma motivation est de vous accompagner pour réaliser vos projets et en faire une expérience incroyable à la montagne et en dehors alors N'hésitez pas à me contacter !"
         />
         <TeamMemberCard
           image="assets/menface.png"

@@ -16,7 +16,7 @@ export default function Home() {
       <div className="flex flex-col gap-20 md:gap-36 px-[7%]">
         <Service />
         <OurTeam />
-        <OurPartners />
+        {false && <OurPartners />}
         <NewsLetter />
       </div>
       <Footer />
