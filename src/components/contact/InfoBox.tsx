@@ -176,7 +176,7 @@ export default function InfoBox() {
     <div className="flex flex-col p-9 gap-16 lg:gap-6 lg:justify-between bg-white shadow-card">
       <div className="flex flex-col gap-6">
         <InfoLine title="Com In Ariège" icon={<FaLocationDot />} content={`8 AVENUE DE DALOU,\n09120 VARILHES`} />
-        <InfoLine title="Appelez-nous" icon={<FaPhone />} content="+33(0) 6 63 56 34 78" />
+        <InfoLine title="Appelez-nous" icon={<FaPhone />} content="+33(0) 6 51 53 86 51" />
         <InfoLine title="Envoyez-nous un mail" icon={<FaEnvelope />} content="contact@cominariege.fr" />
       </div>
       <InfoLine title="On vous appelle ?" icon={<FaPhoneVolume />} content={<CallButton />} />
